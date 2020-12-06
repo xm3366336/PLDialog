@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pld_default_bg"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dip">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginTop="0dip"
+                android:layout_marginEnd="8dip"
+                android:layout_weight="1"
+                android:onClick="OnClickTips1"
+                android:text="提示框1" />
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginStart="8dip"
+                android:layout_marginTop="0dip"
+                android:layout_weight="1"
+                android:onClick="OnClickTips2"
+                android:text="提示框2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dip"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginTop="0dip"
+                android:layout_marginEnd="8dip"
+                android:layout_weight="1"
+                android:onClick="OnClickLoad1"
+                android:text="显示加载中1" />
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginStart="8dip"
+                android:layout_marginTop="0dip"
+                android:layout_weight="1"
+                android:onClick="OnClickLoad2"
+                android:text="显示加载中2" />
+        </LinearLayout>
+
+        <Button
+            style="@style/item_main_btn_style"
+            android:onClick="OnClickTipsSucc"
+            android:text="显示成功" />
+
+        <Button
+            style="@style/item_main_btn_style"
+            android:onClick="OnClickInputText"
+            android:text="输入文字" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dip"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginTop="0dip"
+                android:layout_marginEnd="8dip"
+                android:layout_weight="1"
+                android:onClick="OnClickInputNum"
+                android:text="输入数字" />
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginStart="8dip"
+                android:layout_marginTop="0dip"
+                android:layout_weight="1"
+                android:onClick="OnClickInputIdCard"
+                android:text="输入身份证" />
+        </LinearLayout>
+
+        <Button
+            style="@style/item_main_btn_style"
+            android:onClick="OnClickChoose"
+            android:text="选择一项" />
+
+        <Button
+            style="@style/item_main_btn_style"
+            android:onClick="OnClickPhotoPreview"
+            android:text="预览图片" />
+
+        <TextView
+            android:id="@+id/tv_copyright"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="32dip"
+            android:paddingBottom="32dip"
+            android:textColor="@color/text_666"
+            android:textSize="@dimen/text_size_12"
+            tools:text="@string/version" />
+    </LinearLayout>
+
+</ScrollView>

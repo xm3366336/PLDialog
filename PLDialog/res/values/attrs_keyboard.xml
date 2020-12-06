@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="KeyBoard">
+
+        <!-- 主题样式 -->
+        <attr name="KBTheme" format="enum">
+            <enum name="dark" value="0" />
+            <enum name="light" value="1" />
+        </attr>
+        <!-- 是否显示左下角的按钮，默认不显示，显示的情况下，可指定输入的值 -->
+        <attr name="KB_BtnBottomLeft_show" format="boolean" />
+        <attr name="KB_BtnBottomLeft_text" format="string" />
+        <!-- 右下角的按钮显示什么图片 -->
+        <attr name="KB_BtnBottomRight_img" format="reference" />
+
+    </declare-styleable>
+
+</resources>

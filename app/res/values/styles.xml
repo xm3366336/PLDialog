@@ -1,0 +1,12 @@
+<resources>
+
+    <style name="item_main_btn_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:layout_marginTop">16dip</item>
+        <item name="android:background">@drawable/list_selector_white</item>
+        <item name="android:textColor">@color/text_666_to_999</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+    </style>
+
+</resources>

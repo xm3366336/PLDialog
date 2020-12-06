@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="320dip"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pld_dialog_full"
+        android:padding="16dip">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="32dip"
+            android:paddingBottom="32dip"
+            android:textColor="#4F5A67"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="您需同意提示内容方可使用本软件您需同意提示内容方可使用本软件您需同意提示内容方可使用本软件" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider"
+            app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_marginTop="8dip"
+            android:background="@drawable/list_selector"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="我知道了"
+            android:textColor="#6B7886"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/btn_close"
+        android:layout_width="64dip"
+        android:layout_height="64dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dip"
+        android:background="@drawable/list_selector_r64_trans"
+        android:src="@drawable/ic_baseline_close_24"
+        android:tint="@color/text_aaa"
+        android:visibility="gone"
+        tools:ignore="ContentDescription"
+        tools:visibility="visible" />
+</LinearLayout>
