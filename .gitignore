@@ -83,3 +83,18 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# 其它
+/build
+/.gradle
+# *.json
+*.keystore
+*.sh
+*/build
+local.properties
+.DS_Store
+# settings.gradle
+*/get*Version.json
+
+release/logo.psd
+release/logo.jpg
