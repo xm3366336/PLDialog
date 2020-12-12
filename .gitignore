@@ -96,9 +96,7 @@ local.properties
 # settings.gradle
 */get*Version.json
 
-release/logo.psd
-release/logo.jpg
+release/
 app/release/
 PLDialog/libs/
 app/libs/
-app/release/output-metadata.json

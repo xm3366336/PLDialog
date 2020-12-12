@@ -9,7 +9,8 @@ Android开发过程中，Dialog必不可少的一个组件，本人常用的几�
 
 ## Demo下载
 
- * [本地下载](https://github.com/xm3366336/PLDialog/blob/main/release/app-release.apk)
+ * [本地下载](https://github.com/xm3366336/PLDialog/blob/master/app/release/app-release.apk)
+ * [Google Play](https://play.google.com/store/apps/details?id=com.pengl.PLDialog.demo)
 
 ## 使用
 
