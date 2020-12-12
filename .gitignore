@@ -1,5 +1,5 @@
 # Built application files
-*.apk
+# *.apk
 *.aar
 *.ap_
 *.aab
@@ -98,3 +98,7 @@ local.properties
 
 release/logo.psd
 release/logo.jpg
+app/release/
+PLDialog/libs/
+app/libs/
+app/release/output-metadata.json

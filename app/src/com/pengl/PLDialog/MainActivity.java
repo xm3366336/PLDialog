@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickPhotoPreview(View v) {
-        PLDialogPhotoPreview dialog = new PLDialogPhotoPreview(this, "https://pengl.com/res/pic/pengl_com_weixin_code.png");
+        PLDialogPhotoPreview dialog = new PLDialogPhotoPreview(this, "http://oss.pengl.com/github/other/pay.jpg");
         dialog.setOnLongClickListener(view -> {
             OnClickChoose(view);
             return true;
