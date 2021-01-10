@@ -91,7 +91,6 @@ lint/tmp/
 *.keystore
 *.sh
 */build
-local.properties
 .DS_Store
 # settings.gradle
 */get*Version.json

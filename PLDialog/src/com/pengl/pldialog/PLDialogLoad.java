@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 public class PLDialogLoad extends Dialog {
 
     private static PLDialogLoad loadDialog;
-    private boolean canNotCancel;// 不能取消 true不能取消，false能取消
+    private final boolean canNotCancel;// 不能取消 true不能取消，false能取消
 
     /**
      * 构造

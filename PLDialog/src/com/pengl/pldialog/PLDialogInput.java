@@ -28,7 +28,7 @@ import com.pengl.pldialog.util.ICallBack;
  */
 public class PLDialogInput extends Dialog {
 
-    private AppCompatEditText etInput;
+    private final AppCompatEditText etInput;
     private AppCompatButton btn_confirm;
     private ICallBack callback;
 

@@ -20,7 +20,7 @@ import com.github.chrisbanes.photoview.PhotoView;
  */
 public class PLDialogPhotoPreview extends Dialog {
 
-    private String imgUrl;// 图像的url
+    private final String imgUrl;// 图像的url
     private View.OnLongClickListener mOnLongClick;
 
     public PLDialogPhotoPreview(@NonNull Context context, String imgUrl) {

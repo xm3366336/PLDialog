@@ -61,6 +61,12 @@
 
         <Button
             style="@style/item_main_btn_style"
+            android:onClick="OnClickDialog"
+            android:text="简单的Dialog窗口"
+            android:textAllCaps="false" />
+
+        <Button
+            style="@style/item_main_btn_style"
             android:onClick="OnClickTipsSucc"
             android:text="显示成功" />
 

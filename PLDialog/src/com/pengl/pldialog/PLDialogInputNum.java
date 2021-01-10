@@ -99,7 +99,6 @@ public class PLDialogInputNum extends Dialog {
         mViewKeyboard.setOnKeyboardClickListener(new ViewKeyboard.OnKeyboardClickListener() {
             @Override
             public void onKeyDown(String s) {
-                Log.d("info", maxLength + ">>>>>>>>>>>>>" + s);
                 if (tvNum.getText().toString().length() >= maxLength) {
                     return;
                 }

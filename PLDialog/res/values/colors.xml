@@ -2,6 +2,7 @@
 <resources>
 
     <color name="pld_default_bg">#f5f5f5</color>
+    <color name="pld_edit_activated_color">#ea5c05</color>
 
     <color name="divider">#D6D6D6</color>
     <color name="colorPress">#E6E6E6</color>

@@ -2,17 +2,19 @@ package com.pengl.pldialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
-/**
- * 一个简单的提示
- */
-public class PLDialogTips extends Dialog {
+import androidx.appcompat.widget.AppCompatButton;
 
-    TextView tv_content, tv_ok;
-    View btn_close;
+/**
+ * 简单的dialog窗口
+ */
+public class PLDialog extends Dialog {
+
+    TextView tv_title, tv_content;
+    AppCompatButton btn_confirm, btn_cancel;
+
     View.OnClickListener OnClickOK, OnClickCancel;
 
     public void setOnClickOK(View.OnClickListener onClickOK) {
@@ -23,22 +25,24 @@ public class PLDialogTips extends Dialog {
         OnClickCancel = onClickCancel;
     }
 
-    public PLDialogTips(Context context, String content) {
+    public PLDialog(Context context, String title, String content) {
         super(context, R.style.AppDialog_TransBg);
-        setContentView(R.layout.pl_dialog_tips);
+        setContentView(R.layout.pl_dialog);
         setCanceledOnTouchOutside(false);
+        tv_title = findViewById(R.id.tv_title);
         tv_content = findViewById(R.id.tv_content);
-        btn_close = findViewById(R.id.btn_close);
-        tv_ok = findViewById(R.id.tv_ok);
+        btn_confirm = findViewById(R.id.btn_confirm);
+        btn_cancel = findViewById(R.id.btn_cancel);
 
+        tv_title.setText(title);
         tv_content.setText(content);
-        tv_ok.setOnClickListener(view -> {
+        btn_confirm.setOnClickListener(view -> {
             if (null != OnClickOK) {
                 OnClickOK.onClick(null);
             }
             dismiss();
         });
-        btn_close.setOnClickListener(view -> {
+        btn_cancel.setOnClickListener(view -> {
             if (null != OnClickCancel) {
                 OnClickCancel.onClick(null);
             }
@@ -52,23 +56,16 @@ public class PLDialogTips extends Dialog {
      * @param okStr 文字
      */
     public void setBtnOkText(String okStr) {
-        tv_ok.setText(okStr);
+        btn_confirm.setText(okStr);
     }
 
     /**
-     * 设置内容的对齐方式
-     * 默认居中对齐，如果文字较多，建议修改为左对齐
+     * 修改取消按钮的文字
      *
-     * @param gravity android.view.Gravity
+     * @param cancelStr 文字
      */
-    public void setGravity(int gravity) {
-        tv_content.setGravity(gravity);
+    public void setBtnCancelText(String cancelStr) {
+        btn_cancel.setText(cancelStr);
     }
 
-    /**
-     * 显示关闭按钮，默认是不显示的
-     */
-    public void setShowBtnClose() {
-        btn_close.setVisibility(View.VISIBLE);
-    }
 }

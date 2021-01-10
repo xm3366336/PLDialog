@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class PLDialogLoadTxt extends Dialog {
 
     private static PLDialogLoadTxt loadDialog;
-    private boolean canNotCancel;// 不能取消 true不能取消，false能取消
+    private final boolean canNotCancel;// 不能取消 true不能取消，false能取消
 
     /**
      * 构造
@@ -66,6 +66,10 @@ public class PLDialogLoadTxt extends Dialog {
         loadDialog = new PLDialogLoadTxt(context, tvMsg, canNotCancel);
         loadDialog.setCanceledOnTouchOutside(!canNotCancel);
         loadDialog.show();
+    }
+
+    public static void show(Context context) {
+        show(context, "加载中", false);
     }
 
     /**

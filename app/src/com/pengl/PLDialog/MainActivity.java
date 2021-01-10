@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.pengl.pldialog.PLDialog;
 import com.pengl.pldialog.PLDialogChoice;
 import com.pengl.pldialog.PLDialogInput;
 import com.pengl.pldialog.PLDialogInputNum;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         PLDialogTips dialog = new PLDialogTips(this, "你确定要做这个操作吗？\n\n如果操作了会导致你的手机死机，或者是原地爆炸，如果你确认的话，请点击确定，否则请关闭");
         dialog.setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show());
         dialog.setOnClickCancel(v2 -> Toast.makeText(MainActivity.this, "点击了关闭", Toast.LENGTH_SHORT).show());
-        dialog.setContent(Gravity.START);
+        dialog.setGravity(Gravity.START);
         dialog.setBtnOkText("确定");
         dialog.setShowBtnClose();
         dialog.show();
@@ -73,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void OnClickTipsSucc(View v) {
         new PLDialogTipsSucc(this, "干活成功", "你可以继续ooxx了").show();
+    }
+
+    public void OnClickDialog(View v) {
+        PLDialog dialog = new PLDialog(this, "这是标题", "这里是内容这里是内容这里是内容这里是内容");
+        dialog.setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show());
+        dialog.show();
     }
 
     public void OnClickInputText(View v) {
