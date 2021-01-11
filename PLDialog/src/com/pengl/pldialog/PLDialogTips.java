@@ -11,7 +11,7 @@ import android.widget.TextView;
  */
 public class PLDialogTips extends Dialog {
 
-    TextView tv_content, tv_ok;
+    TextView tv_title, tv_content, tv_ok;
     View btn_close;
     View.OnClickListener OnClickOK, OnClickCancel;
 
@@ -23,15 +23,25 @@ public class PLDialogTips extends Dialog {
         OnClickCancel = onClickCancel;
     }
 
+    public PLDialogTips(Context context) {
+        super(context, R.style.AppDialog_TransBg);
+        init("");
+    }
+
     public PLDialogTips(Context context, String content) {
         super(context, R.style.AppDialog_TransBg);
+        init(content);
+    }
+
+    private void init(String content) {
         setContentView(R.layout.pl_dialog_tips);
         setCanceledOnTouchOutside(false);
+        tv_title = findViewById(R.id.tv_title);
         tv_content = findViewById(R.id.tv_content);
         btn_close = findViewById(R.id.btn_close);
         tv_ok = findViewById(R.id.tv_ok);
 
-        tv_content.setText(content);
+        setContent(content);
         tv_ok.setOnClickListener(view -> {
             if (null != OnClickOK) {
                 OnClickOK.onClick(null);
@@ -44,6 +54,23 @@ public class PLDialogTips extends Dialog {
             }
             dismiss();
         });
+    }
+
+    public TextView getTitleView() {
+        return tv_title;
+    }
+
+    public TextView getContentView() {
+        return tv_content;
+    }
+
+    public void setTitle(String title) {
+        tv_title.setText(title);
+        tv_title.setVisibility(View.VISIBLE);
+    }
+
+    public void setContent(String content) {
+        tv_content.setText(content);
     }
 
     /**

@@ -7,14 +7,16 @@
 
     <RelativeLayout
         android:layout_width="240dip"
-        android:layout_height="320dip"
+        android:layout_height="wrap_content"
         android:background="@drawable/pld_dialog_full"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:paddingTop="48dip"
+        android:paddingBottom="32dip">
 
         <ImageView
             android:id="@+id/ic_tips_succ"
-            android:layout_width="64dip"
-            android:layout_height="64dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:src="@mipmap/pld_tips_succ"
             tools:ignore="ContentDescription" />
@@ -25,7 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ic_tips_succ"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="64dip"
+            android:layout_marginLeft="24dip"
+            android:layout_marginTop="48dip"
+            android:layout_marginRight="24dip"
             android:gravity="center"
             android:textColor="@color/text_333"
             android:textSize="@dimen/text_size_24"

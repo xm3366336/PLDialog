@@ -1,6 +1,7 @@
 package com.pengl.PLDialog;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -58,12 +59,25 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * 简单的提示
+     *
+     * @param v v
+     */
     public void OnClickTips1(View v) {
         new PLDialogTips(this, "这是提示内容").show();
     }
 
+    /**
+     * 全部的接口
+     *
+     * @param v v
+     */
     public void OnClickTips2(View v) {
-        PLDialogTips dialog = new PLDialogTips(this, "你确定要做这个操作吗？\n\n如果操作了会导致你的手机死机，或者是原地爆炸，如果你确认的话，请点击确定，否则请关闭");
+        PLDialogTips dialog = new PLDialogTips(this);
+        dialog.setTitle("你确定要做这个操作吗？");
+        dialog.setContent("如果操作了会导致你的手机死机，或者是原地爆炸，如果你确认的话，请点击确定，否则请关闭");
+        dialog.getContentView().setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));//去除加粗
         dialog.setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show());
         dialog.setOnClickCancel(v2 -> Toast.makeText(MainActivity.this, "点击了关闭", Toast.LENGTH_SHORT).show());
         dialog.setGravity(Gravity.START);
@@ -73,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickTipsSucc(View v) {
-        new PLDialogTipsSucc(this, "干活成功", "你可以继续ooxx了").show();
+        PLDialogTipsSucc dialog = new PLDialogTipsSucc(this, "干活成功", "你可以继续ooxx了");
+        dialog.setImageResource(R.mipmap.ic_successful);
+        dialog.show();
     }
 
     public void OnClickDialog(View v) {
