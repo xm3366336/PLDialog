@@ -2,6 +2,7 @@ package com.pengl.pldialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.Spanned;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -73,6 +74,10 @@ public class PLDialogTips extends Dialog {
         tv_content.setText(content);
     }
 
+    public void setContent(Spanned content) {
+        tv_content.setText(content);
+    }
+
     /**
      * 修改确定按钮的文字
      *
@@ -87,7 +92,9 @@ public class PLDialogTips extends Dialog {
      * 默认居中对齐，如果文字较多，建议修改为左对齐
      *
      * @param gravity android.view.Gravity
+     * @deprecated use getContentView().setGravity(int gravity)
      */
+    @Deprecated
     public void setGravity(int gravity) {
         tv_content.setGravity(gravity);
     }

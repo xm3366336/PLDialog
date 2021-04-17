@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
         dialog.getContentView().setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));//去除加粗
         dialog.setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show());
         dialog.setOnClickCancel(v2 -> Toast.makeText(MainActivity.this, "点击了关闭", Toast.LENGTH_SHORT).show());
-        dialog.setGravity(Gravity.START);
+        dialog.getTitleView().setGravity(Gravity.START);
+        dialog.getContentView().setGravity(Gravity.START);
         dialog.setBtnOkText("确定");
         dialog.setShowBtnClose();
         dialog.show();
