@@ -20,10 +20,10 @@ import com.github.chrisbanes.photoview.PhotoView;
  */
 public class PLDialogPhotoPreview extends Dialog {
 
-    private final String imgUrl;// 图像的url
+    private final Object imgUrl;// 图像的url
     private View.OnLongClickListener mOnLongClick;
 
-    public PLDialogPhotoPreview(@NonNull Context context, String imgUrl) {
+    public PLDialogPhotoPreview(@NonNull Context context, Object imgUrl) {
         super(context, R.style.AppDialog_TransBg_FadeInOut);
         this.imgUrl = imgUrl;
     }
