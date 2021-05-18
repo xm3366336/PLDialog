@@ -26,14 +26,14 @@ implementation 'com.github.xm3366336:PLDialog:1.1.4'
 
 ## 图示
 
- <img src="http://oss.pengl.com/github/PLDialog/1-main.jpg" width="200" height="445" align=center />
- <img src="http://oss.pengl.com/github/PLDialog/2-tips1.jpg" width="200" height="445" align=center />
- <img src="http://oss.pengl.com/github/PLDialog/3-progress.jpg" width="200" height="445" align=center />
+ <img src="http://oss.luokj.com/github/PLDialog/1-main.jpg" width="200" height="445" align=center />
+ <img src="http://oss.luokj.com/github/PLDialog/2-tips1.jpg" width="200" height="445" align=center />
+ <img src="http://oss.luokj.com/github/PLDialog/3-progress.jpg" width="200" height="445" align=center />
 
- <img src="http://oss.pengl.com/github/PLDialog/4-tips_succ.jpg" width="200" height="445" align=center />
- <img src="http://oss.pengl.com/github/PLDialog/5-input_text.jpg" width="200" height="445" align=center />
- <img src="http://oss.pengl.com/github/PLDialog/6-input_num.jpg" width="200" height="445" align=center />
+ <img src="http://oss.luokj.com/github/PLDialog/4-tips_succ.jpg" width="200" height="445" align=center />
+ <img src="http://oss.luokj.com/github/PLDialog/5-input_text.jpg" width="200" height="445" align=center />
+ <img src="http://oss.luokj.com/github/PLDialog/6-input_num.jpg" width="200" height="445" align=center />
 
- <img src="http://oss.pengl.com/github/PLDialog/7-input_idcard.jpg" width="200" height="445" align=center />
- <img src="http://oss.pengl.com/github/PLDialog/8-choose.jpg" width="200" height="445" align=center />
- <img src="http://oss.pengl.com/github/PLDialog/9-photo.jpg" width="200" height="445" align=center />
+ <img src="http://oss.luokj.com/github/PLDialog/7-input_idcard.jpg" width="200" height="445" align=center />
+ <img src="http://oss.luokj.com/github/PLDialog/8-choose.jpg" width="200" height="445" align=center />
+ <img src="http://oss.luokj.com/github/PLDialog/9-photo.jpg" width="200" height="445" align=center />
