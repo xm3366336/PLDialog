@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.library'
+    id 'com.github.dcendents.android-maven'
 }
+
+group = 'com.github.xm3366336'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -46,5 +49,3 @@ dependencies {
     // 图片加载
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 }
-
-apply from: "bintrayUpload.gradle"
