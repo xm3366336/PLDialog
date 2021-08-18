@@ -1,4 +1,5 @@
 # PLDialog
+[![](https://jitpack.io/v/xm3366336/PLDialog.svg)](https://jitpack.io/#xm3366336/PLDialog)
 
 Android开发过程中，Dialog必不可少的一个组件，本人常用的几个：
  * 提示框

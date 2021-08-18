@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatButton;
+
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 /**
@@ -15,19 +17,17 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
  */
 public class PLDialogChoice extends BottomSheetDialog {
 
-    private Context ctx;
-    private int margins;
+    private final int margins;
 
-    private Button btn_cancel;
-    private TextView tv_title, tv_content;
-    private LinearLayout layout_btns;
+    private final Button btn_cancel;
+    private final TextView tv_title, tv_content;
+    private final LinearLayout layout_btns;
 
     private OnClickListener onConfirmListener;
 
     public PLDialogChoice(Context context) {
         super(context);
         setContentView(R.layout.pl_dialog_choice);
-        this.ctx = context;
         this.btn_cancel = findViewById(R.id.btn_cancel);
         this.tv_title = findViewById(R.id.tv_title);
         this.tv_content = findViewById(R.id.tv_content);
@@ -98,9 +98,9 @@ public class PLDialogChoice extends BottomSheetDialog {
     private Button createButton(String str, int style, final int position) {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        Button btn = new Button(ctx);
+        AppCompatButton btn = new AppCompatButton(getContext());
         btn.setText(str);
-        btn.setTextColor(ctx.getResources().getColor(R.color.text_666_to_999));
+        btn.setTextColor(getContext().getResources().getColor(R.color.text_666_to_999));
         btn.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
 
         if (style == 0) {

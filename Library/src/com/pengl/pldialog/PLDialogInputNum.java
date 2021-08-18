@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.pengl.pldialog.util.ICallBack;
 import com.pengl.pldialog.view.ViewKeyboard;
@@ -26,13 +27,14 @@ public class PLDialogInputNum extends Dialog {
     private ICallBack callback;
     private int maxLength;// 最大长度
 
-    private final TextView tvNum;
+    private final AppCompatTextView tvNum;
     private final ViewKeyboard mViewKeyboard;
     private final AppCompatImageButton btn_del;
 
     public enum TYPE {
         NORMAL, // 正常输入数字
         IDCARD, // 输入身份证号码
+        PHONE,  // 11位的手机号码
     }
 
     public PLDialogInputNum(Context context) {
@@ -48,8 +50,9 @@ public class PLDialogInputNum extends Dialog {
      *
      * @param showType 显示方式 @see PLDialogInputNum.TYPE
      */
-    public void setShowType(TYPE showType) {
+    public PLDialogInputNum setShowType(TYPE showType) {
         this.showType = showType;
+        return this;
     }
 
     /**
@@ -57,8 +60,9 @@ public class PLDialogInputNum extends Dialog {
      *
      * @param callback 回调
      */
-    public void setCallback(ICallBack callback) {
+    public PLDialogInputNum setCallback(ICallBack callback) {
         this.callback = callback;
+        return this;
     }
 
     /**
@@ -66,8 +70,17 @@ public class PLDialogInputNum extends Dialog {
      *
      * @param maxLength 长度
      */
-    public void setMaxLength(int maxLength) {
+    public PLDialogInputNum setMaxLength(int maxLength) {
         this.maxLength = maxLength;
+        return this;
+    }
+
+    public AppCompatTextView getTvNum() {
+        return tvNum;
+    }
+
+    public AppCompatImageButton getBtnDel() {
+        return btn_del;
     }
 
     @Override
@@ -131,6 +144,9 @@ public class PLDialogInputNum extends Dialog {
             setMaxLength(18);
             tvNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.text_size_20));
             mViewKeyboard.setKeyboardBLText("X");
+        } else if (showType == TYPE.PHONE) {
+            setMaxLength(11);
+            tvNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.text_size_40));
         }
         super.show();
     }

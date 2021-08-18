@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.chrisbanes.photoview.PhotoView;
 
 /**
@@ -21,11 +22,20 @@ import com.github.chrisbanes.photoview.PhotoView;
 public class PLDialogPhotoPreview extends Dialog {
 
     private final Object imgUrl;// 图像的url
+    private final boolean isUseCache;// 是否使用缓存，默认使用
+
     private View.OnLongClickListener mOnLongClick;
 
     public PLDialogPhotoPreview(@NonNull Context context, Object imgUrl) {
         super(context, R.style.AppDialog_TransBg_FadeInOut);
         this.imgUrl = imgUrl;
+        this.isUseCache = true;
+    }
+
+    public PLDialogPhotoPreview(@NonNull Context context, Object imgUrl, boolean isUseCache) {
+        super(context, R.style.AppDialog_TransBg_FadeInOut);
+        this.imgUrl = imgUrl;
+        this.isUseCache = isUseCache;
     }
 
     public void setOnLongClickListener(View.OnLongClickListener l) {
@@ -59,7 +69,15 @@ public class PLDialogPhotoPreview extends Dialog {
         getWindow().setAttributes(lp);
 
         PhotoView mPhotoView = findViewById(R.id.mPhotoView);
-        Glide.with(mPhotoView.getContext()).load(imgUrl).dontAnimate().into(mPhotoView);
+        if (isUseCache) {
+            Glide.with(mPhotoView.getContext()).load(imgUrl).dontAnimate().into(mPhotoView);
+        } else {
+            Glide.with(mPhotoView.getContext()).load(imgUrl)
+                    .skipMemoryCache(true) // 不使用内存缓存
+                    .diskCacheStrategy(DiskCacheStrategy.NONE) // 不使用磁盘缓存
+                    .dontAnimate().into(mPhotoView);
+        }
+
         mPhotoView.setOnPhotoTapListener((view, x, y) -> dismiss());
         mPhotoView.setOnOutsidePhotoTapListener(imageView -> dismiss());
         mPhotoView.setOnLongClickListener(view -> {

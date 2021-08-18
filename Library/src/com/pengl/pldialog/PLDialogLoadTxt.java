@@ -72,6 +72,10 @@ public class PLDialogLoadTxt extends Dialog {
         show(context, "加载中", false);
     }
 
+    public static void show(Context context, String tvMsg) {
+        show(context, tvMsg, false);
+    }
+
     /**
      * 关闭
      */

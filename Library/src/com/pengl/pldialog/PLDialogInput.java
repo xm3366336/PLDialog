@@ -49,8 +49,9 @@ public class PLDialogInput extends Dialog {
      *
      * @param callback 回调
      */
-    public void setCallback(ICallBack callback) {
+    public PLDialogInput setCallback(ICallBack callback) {
         this.callback = callback;
+        return this;
     }
 
     /**
@@ -58,9 +59,10 @@ public class PLDialogInput extends Dialog {
      *
      * @param content 内容
      */
-    public void setOriginContent(String content) {
+    public PLDialogInput setOriginContent(String content) {
         etInput.setText(content);
         Selection.selectAll(etInput.getText());
+        return this;
     }
 
     /**
@@ -68,8 +70,9 @@ public class PLDialogInput extends Dialog {
      *
      * @param hint 提示内容
      */
-    public void setInputHint(String hint) {
+    public PLDialogInput setInputHint(String hint) {
         etInput.setHint(hint);
+        return this;
     }
 
     /**
@@ -77,8 +80,9 @@ public class PLDialogInput extends Dialog {
      *
      * @param mustInput true是的（默认），false无须
      */
-    public void setMustInput(boolean mustInput) {
+    public PLDialogInput setMustInput(boolean mustInput) {
         isMustInput = mustInput;
+        return this;
     }
 
     public EditText getEditText() {

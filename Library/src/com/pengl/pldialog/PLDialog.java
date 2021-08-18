@@ -25,17 +25,28 @@ public class PLDialog extends Dialog {
         OnClickCancel = onClickCancel;
     }
 
+    public PLDialog(Context context) {
+        super(context, R.style.AppDialog_TransBg);
+        setContentView(R.layout.pl_dialog);
+        setCanceledOnTouchOutside(false);
+        init();
+    }
+
     public PLDialog(Context context, String title, String content) {
         super(context, R.style.AppDialog_TransBg);
         setContentView(R.layout.pl_dialog);
         setCanceledOnTouchOutside(false);
+        init();
+        setTitle(title);
+        setContent(content);
+    }
+
+    private void init() {
         tv_title = findViewById(R.id.tv_title);
         tv_content = findViewById(R.id.tv_content);
         btn_confirm = findViewById(R.id.btn_confirm);
         btn_cancel = findViewById(R.id.btn_cancel);
 
-        tv_title.setText(title);
-        tv_content.setText(content);
         btn_confirm.setOnClickListener(view -> {
             if (null != OnClickOK) {
                 OnClickOK.onClick(null);
@@ -50,13 +61,24 @@ public class PLDialog extends Dialog {
         });
     }
 
+    public PLDialog setTitle(String title) {
+        tv_title.setText(title);
+        return this;
+    }
+
+    public PLDialog setContent(String content) {
+        tv_content.setText(content);
+        return this;
+    }
+
     /**
      * 修改确定按钮的文字
      *
      * @param okStr 文字
      */
-    public void setBtnOkText(String okStr) {
+    public PLDialog setBtnOkText(String okStr) {
         btn_confirm.setText(okStr);
+        return this;
     }
 
     /**
@@ -64,8 +86,9 @@ public class PLDialog extends Dialog {
      *
      * @param cancelStr 文字
      */
-    public void setBtnCancelText(String cancelStr) {
+    public PLDialog setBtnCancelText(String cancelStr) {
         btn_cancel.setText(cancelStr);
+        return this;
     }
 
 }

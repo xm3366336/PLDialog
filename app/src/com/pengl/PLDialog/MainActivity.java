@@ -74,23 +74,25 @@ public class MainActivity extends AppCompatActivity {
      * @param v v
      */
     public void OnClickTips2(View v) {
-        PLDialogTips dialog = new PLDialogTips(this);
-        dialog.setTitle("你确定要做这个操作吗？");
-        dialog.setContent("如果操作了会导致你的手机死机，或者是原地爆炸，如果你确认的话，请点击确定，否则请关闭");
-        dialog.getContentView().setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));//去除加粗
-        dialog.setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show());
-        dialog.setOnClickCancel(v2 -> Toast.makeText(MainActivity.this, "点击了关闭", Toast.LENGTH_SHORT).show());
+        PLDialogTips dialog = new PLDialogTips(this)
+                .setTitle("你确定要做这个操作吗？")
+                .setContent("如果操作了会导致你的手机死机，或者是原地爆炸，如果你确认的话，请点击确定，否则请关闭")
+                .setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show())
+                .setOnClickCancel(v2 -> Toast.makeText(MainActivity.this, "点击了关闭", Toast.LENGTH_SHORT).show())
+                .setBtnOkText("确定")
+                .setShowBtnClose();
         dialog.getTitleView().setGravity(Gravity.START);
         dialog.getContentView().setGravity(Gravity.START);
-        dialog.setBtnOkText("确定");
-        dialog.setShowBtnClose();
+        dialog.getContentView().setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
         dialog.show();
     }
 
     public void OnClickTipsSucc(View v) {
-        PLDialogTipsSucc dialog = new PLDialogTipsSucc(this, "干活成功", "你可以继续ooxx了");
-        dialog.setImageResource(R.mipmap.ic_successful);
-        dialog.show();
+        new PLDialogTipsSucc(this)
+                .setTitle("干活成功")
+                .setContent("你可以继续ooxx了")
+                .setImageResource(R.mipmap.ic_successful)
+                .show();
     }
 
     public void OnClickDialog(View v) {

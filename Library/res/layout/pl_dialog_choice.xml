@@ -37,12 +37,13 @@
         android:layout_marginTop="16dip"
         android:orientation="vertical" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dip"
         android:background="@drawable/btn_r4_stroke_white"
+        android:gravity="center"
         android:text="取消"
         android:textColor="@color/text_666_to_999"
         android:textSize="@dimen/text_size_16" />

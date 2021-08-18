@@ -13,15 +13,14 @@
         android:paddingTop="48dip"
         android:paddingBottom="32dip">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_tips_succ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/pld_tips_succ"
-            tools:ignore="ContentDescription" />
+            android:src="@mipmap/pld_tips_succ" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/succ_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +35,7 @@
             android:visibility="visible"
             tools:text="编译成功" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/succ_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,13 +52,14 @@
 
     </RelativeLayout>
 
-    <ImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_close"
         android:layout_width="64dip"
         android:layout_height="64dip"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dip"
         android:background="@drawable/list_selector_r64_trans"
+        android:scaleType="center"
         android:src="@drawable/ic_baseline_close_24"
         android:tint="@color/text_aaa"
         tools:ignore="ContentDescription" />

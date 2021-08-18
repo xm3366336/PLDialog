@@ -16,12 +16,14 @@ public class PLDialogTips extends Dialog {
     View btn_close;
     View.OnClickListener OnClickOK, OnClickCancel;
 
-    public void setOnClickOK(View.OnClickListener onClickOK) {
+    public PLDialogTips setOnClickOK(View.OnClickListener onClickOK) {
         OnClickOK = onClickOK;
+        return this;
     }
 
-    public void setOnClickCancel(View.OnClickListener onClickCancel) {
+    public PLDialogTips setOnClickCancel(View.OnClickListener onClickCancel) {
         OnClickCancel = onClickCancel;
+        return this;
     }
 
     public PLDialogTips(Context context) {
@@ -65,17 +67,20 @@ public class PLDialogTips extends Dialog {
         return tv_content;
     }
 
-    public void setTitle(String title) {
+    public PLDialogTips setTitle(String title) {
         tv_title.setText(title);
         tv_title.setVisibility(View.VISIBLE);
+        return this;
     }
 
-    public void setContent(String content) {
+    public PLDialogTips setContent(String content) {
         tv_content.setText(content);
+        return this;
     }
 
-    public void setContent(Spanned content) {
+    public PLDialogTips setContent(Spanned content) {
         tv_content.setText(content);
+        return this;
     }
 
     /**
@@ -83,8 +88,9 @@ public class PLDialogTips extends Dialog {
      *
      * @param okStr 文字
      */
-    public void setBtnOkText(String okStr) {
+    public PLDialogTips setBtnOkText(String okStr) {
         tv_ok.setText(okStr);
+        return this;
     }
 
     /**
@@ -102,7 +108,8 @@ public class PLDialogTips extends Dialog {
     /**
      * 显示关闭按钮，默认是不显示的
      */
-    public void setShowBtnClose() {
+    public PLDialogTips setShowBtnClose() {
         btn_close.setVisibility(View.VISIBLE);
+        return this;
     }
 }
