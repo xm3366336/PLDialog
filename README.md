@@ -17,7 +17,7 @@ Android开发过程中，Dialog必不可少的一个组件，本人常用的几�
 
 > 1、引入
 ```
-implementation 'com.github.xm3366336:PLDialog:1.1.4'
+implementation 'com.github.xm3366336:PLDialog:1.1.6'
 ```
 
 > 2、看Demo中的MainActivity即可

@@ -1,6 +1,7 @@
 package com.pengl.pldialog.view;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -49,16 +51,16 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
         keyboard_btn_bottom_right = findViewById(R.id.keyboard_btn_bottom_right);
 
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.KeyBoard);
-        int theme = a.getInt(R.styleable.KeyBoard_KBTheme, 0);
+        int theme = a.getInt(R.styleable.KeyBoard_KB_Theme, 0);
+        int textColor = a.getColor(R.styleable.KeyBoard_KB_textColor, 0);
+        setKeyboardTextSize(a.getDimension(R.styleable.KeyBoard_KB_textSize, getResources().getDimension(R.dimen.text_size_24)));
         setKeyboardBLShow(a.getBoolean(R.styleable.KeyBoard_KB_BtnBottomLeft_show, false));
         setKeyboardBLText(a.getString(R.styleable.KeyBoard_KB_BtnBottomLeft_text));
         setKeyboardBRImageResource(a.getResourceId(R.styleable.KeyBoard_KB_BtnBottomRight_img, //
                 theme == 1 ? R.mipmap.pld_keyboard_del_light : R.mipmap.pld_keyboard_del_dark));
         a.recycle();
 
-
         keyboard_btn_bottom_left.setOnClickListener(onClickNum);
-        setKeyboardTheme(R.id.keyboard_btn_bottom_left, theme == 1 ? R.color.colorWhite : R.color.text_666);
 
         keyboard_btn_bottom_right.setOnClickListener(onClickBottomRight);
         keyboard_btn_bottom_right.setOnLongClickListener(v -> {
@@ -70,19 +72,38 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
 
         for (int btnId : keyboard_btn) {
             findViewById(btnId).setOnClickListener(onClickNum);
-            setKeyboardTheme(btnId, theme == 1 ? R.color.colorWhite : R.color.text_666);
         }
 
+        if (textColor == 0) {
+            setKeyboardTextColor(getResources().getColor(theme == 1 ? R.color.colorWhite : R.color.text_666));
+        } else {
+            setKeyboardTextColor(textColor);
+        }
     }
 
     /**
-     * 按主题的样式显示
+     * 设置数字字体颜色
      *
-     * @param resId 资源id
      * @param color 颜色id
      */
-    private void setKeyboardTheme(int resId, @ColorRes int color) {
-        ((Button) findViewById(resId)).setTextColor(getResources().getColor(color));
+    public void setKeyboardTextColor(@ColorInt int color) {
+        for (int btnId : keyboard_btn) {
+            ((Button) findViewById(btnId)).setTextColor(color);
+        }
+        keyboard_btn_bottom_left.setTextColor(color);
+        keyboard_btn_bottom_right.setImageTintList(ColorStateList.valueOf(color));
+    }
+
+    /**
+     * 设置数字字体颜色
+     *
+     * @param textSize 字体大小 px
+     */
+    public void setKeyboardTextSize(float textSize) {
+        for (int btnId : keyboard_btn) {
+            ((Button) findViewById(btnId)).setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        }
+        keyboard_btn_bottom_left.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
     }
 
     /**

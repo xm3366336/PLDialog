@@ -4,10 +4,14 @@
     <declare-styleable name="KeyBoard">
 
         <!-- 主题样式 -->
-        <attr name="KBTheme" format="enum">
+        <attr name="KB_Theme" format="enum">
             <enum name="dark" value="0" />
             <enum name="light" value="1" />
         </attr>
+        <!-- 指定字体颜色 -->
+        <attr name="KB_textColor" format="color" />
+        <!-- 指定字体大小 -->
+        <attr name="KB_textSize" format="dimension" />
         <!-- 是否显示左下角的按钮，默认不显示，显示的情况下，可指定输入的值 -->
         <attr name="KB_BtnBottomLeft_show" format="boolean" />
         <attr name="KB_BtnBottomLeft_text" format="string" />
