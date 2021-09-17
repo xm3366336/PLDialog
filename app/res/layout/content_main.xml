@@ -65,10 +65,39 @@
             android:text="简单的Dialog窗口"
             android:textAllCaps="false" />
 
-        <Button
-            style="@style/item_main_btn_style"
-            android:onClick="OnClickTipsSucc"
-            android:text="显示成功" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dip"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginTop="0dip"
+                android:layout_marginEnd="8dip"
+                android:layout_weight="1"
+                android:onClick="OnClickToast1"
+                android:text="Toast 1"
+                android:textAllCaps="false" />
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginStart="8dip"
+                android:layout_marginTop="0dip"
+                android:layout_marginEnd="8dip"
+                android:layout_weight="1"
+                android:onClick="OnClickToast2"
+                android:text="Toast 2"
+                android:textAllCaps="false" />
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginStart="8dip"
+                android:layout_marginTop="0dip"
+                android:layout_weight="1"
+                android:onClick="OnClickTipsSucc"
+                android:text="显示成功" />
+        </LinearLayout>
 
         <Button
             style="@style/item_main_btn_style"

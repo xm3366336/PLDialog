@@ -15,6 +15,7 @@ import com.pengl.pldialog.PLDialogLoadTxt;
 import com.pengl.pldialog.PLDialogPhotoPreview;
 import com.pengl.pldialog.PLDialogTips;
 import com.pengl.pldialog.PLDialogTipsSucc;
+import com.pengl.pldialog.PLToast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -160,5 +161,13 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
         dialog.show();
+    }
+
+    public void OnClickToast1(View v) {
+        PLToast.showErr(this, "出错啦~");
+    }
+
+    public void OnClickToast2(View v) {
+        PLToast.showSimple(this, "这是一个提示");
     }
 }
