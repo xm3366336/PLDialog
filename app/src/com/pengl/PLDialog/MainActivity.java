@@ -1,5 +1,7 @@
 package com.pengl.PLDialog;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -25,6 +27,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     public void OnClickTips2(View v) {
         PLDialogTips dialog = new PLDialogTips(this)
                 .setTitle("你确定要做这个操作吗？")
-                .setContent("如果操作了会导致你的手机死机，或者是原地爆炸，如果你确认的话，请点击确定，否则请关闭")
+                .setContent("这里显示是的内容，这里显示是的内容，这里显示是的内容，这里显示是的内容。\n如果你确认的话，请点击确定，否则请关闭")
                 .setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show())
                 .setOnClickCancel(v2 -> Toast.makeText(MainActivity.this, "点击了关闭", Toast.LENGTH_SHORT).show())
                 .setBtnOkText("确定")
@@ -103,7 +106,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickInputText(View v) {
-        PLDialogInput dialog = new PLDialogInput(this, "请输入姓名", "为确保信息安全，请输入你的姓名，不超过5个字");
+        PLDialogInput dialog = new PLDialogInput(this);
+        dialog.setTitle("请输入姓名");
+        dialog.setTitleSub("为确保信息安全，请输入你的姓名，不超过5个字");
         dialog.setInputHint("最长5个字");
         dialog.setOriginContent("张三");
         dialog.setCallback(params -> {
@@ -155,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickPhotoPreview(View v) {
-        PLDialogPhotoPreview dialog = new PLDialogPhotoPreview(this, "http://oss.pengl.com/github/other/pay.jpg");
+        PLDialogPhotoPreview dialog = new PLDialogPhotoPreview(this, "http://oss.luokj.com/github/other/pay.jpg");
         dialog.setOnLongClickListener(view -> {
             OnClickChoose(view);
             return true;

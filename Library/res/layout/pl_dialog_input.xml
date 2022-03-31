@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/pld_default_bg"
     android:orientation="vertical">
 
-    <TextView
+    <View
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:background="@color/pld_default_bg"
+        app:layout_constraintBottom_toBottomOf="@id/space"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,9 +25,11 @@
         android:textColor="@color/text_333"
         android:textSize="@dimen/text_size_18"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="请输入手机号码" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title_sub"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,16 +38,17 @@
         android:layout_marginEnd="24dip"
         android:textColor="@color/text_666"
         android:textSize="@dimen/text_size_16"
+        app:layout_constraintStart_toStartOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
         tools:text="副标题" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_title_sub"
         android:layout_marginStart="24dip"
         android:layout_marginTop="16dip"
-        android:layout_marginEnd="16dip"
+        android:layout_marginEnd="24dip"
         android:background="@android:color/transparent"
         android:hint="请输入..."
         android:paddingStart="8dip"
@@ -47,41 +57,50 @@
         android:paddingBottom="8dip"
         android:textColor="?colorPrimary"
         android:textColorHint="@color/text_ccc"
-        android:textSize="@dimen/text_size_16" />
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_sub" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1.5dip"
-        android:layout_below="@id/et_input"
         android:layout_marginStart="24dip"
         android:layout_marginEnd="24dip"
         android:layout_marginBottom="16dip"
-        android:background="@color/pld_edit_activated_color" />
+        android:background="@color/pld_edit_activated_color"
+        app:layout_constraintTop_toBottomOf="@id/et_input" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirm"
         android:layout_width="96dp"
         android:layout_height="48dip"
-        android:layout_below="@+id/et_input"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dip"
+        android:layout_marginStart="16dip"
+        android:layout_marginTop="16dip"
+        android:layout_marginEnd="24dip"
+        android:layout_marginBottom="16dip"
         android:background="@drawable/btn_fixed"
         android:gravity="center"
         android:padding="8dp"
         android:text="确定"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/text_size_13" />
+        android:textSize="@dimen/text_size_13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_input" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cancel"
         android:layout_width="96dp"
         android:layout_height="48dip"
-        android:layout_alignTop="@id/btn_confirm"
-        android:layout_toStartOf="@id/btn_confirm"
         android:background="@drawable/list_selector"
         android:gravity="center"
         android:text="取消"
         android:textColor="#6B7886"
-        android:textSize="@dimen/text_size_13" />
+        android:textSize="@dimen/text_size_13"
+        app:layout_constraintEnd_toStartOf="@id/btn_confirm"
+        app:layout_constraintTop_toTopOf="@id/btn_confirm" />
 
-</RelativeLayout>
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="16dip"
+        app:layout_constraintTop_toBottomOf="@id/btn_confirm" />
+</androidx.constraintlayout.widget.ConstraintLayout>
