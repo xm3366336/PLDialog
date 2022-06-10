@@ -1,0 +1,39 @@
+<resources>
+
+    <style name="PLAppDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="PLAppDialog.TransBg">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="PLAppDialog.TransBg.FadeInOut">
+        <item name="android:windowAnimationStyle">@style/PLAnimationFadeInOut</item>
+    </style>
+
+    <style name="PLAppDialog.TransBg.PushInOut">
+        <item name="android:windowAnimationStyle">@style/PLAnimationPushInOut</item>
+    </style>
+
+    <style name="PLAnimationFadeInOut">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <style name="PLAnimationPushInOut">
+        <item name="android:windowEnterAnimation">@anim/push_enter</item>
+        <item name="android:windowExitAnimation">@anim/push_exit</item>
+    </style>
+
+    <style name="PLKeyboardStyle" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/push_enter</item>
+        <item name="android:windowExitAnimation">@anim/push_exit</item>
+    </style>
+
+</resources>
