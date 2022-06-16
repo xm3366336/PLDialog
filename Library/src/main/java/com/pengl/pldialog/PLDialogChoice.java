@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 /**
@@ -33,6 +35,15 @@ public class PLDialogChoice extends BottomSheetDialog {
         this.tv_content = findViewById(R.id.tv_content);
         this.layout_btns = findViewById(R.id.layout_btns);
         this.margins = (int) -TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0.5f, context.getResources().getDisplayMetrics());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        BottomSheetBehavior<FrameLayout> behavior = getBehavior();
+        if (behavior.getState() != BottomSheetBehavior.STATE_EXPANDED)
+            behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     public PLDialogChoice setOnClickListener(OnClickListener onConfirmListener) {

@@ -14,6 +14,7 @@
         <entry key="Library/res/layout/pl_dialog_tips_succ.xml" value="0.44166666666666665" />
         <entry key="Library/res/layout/pl_toast.xml" value="0.44166666666666665" />
         <entry key="Library/res/layout/view_keyboard.xml" value="0.4027777777777778" />
+        <entry key="Library/src/main/res/layout/pl_dialog.xml" value="0.2390625" />
         <entry key="app/res/layout/content_main.xml" value="0.4348717948717949" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.44166666666666665" />
       </map>
