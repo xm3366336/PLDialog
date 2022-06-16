@@ -30,7 +30,7 @@ class VehicleKeyboardView extends KeyboardView {
     private Paint paint;
     private Rect rectBg, rectBound, rectText, rectIcon;
 
-    private int _3dpToPx, _6dpToPx, _15dpToPx;
+    private int _3dpToPx, _6dpToPx, _32dpToPx;
 
     public static VehicleKeyboardView newInstance(Context context) {
         return new VehicleKeyboardView(context, null);
@@ -64,12 +64,11 @@ class VehicleKeyboardView extends KeyboardView {
 
         _3dpToPx = dip2px(3);
         _6dpToPx = dip2px(6);
-        _15dpToPx = dip2px(15);
+        _32dpToPx = dip2px(32);
 
         mProvincesKeyBoard = new Keyboard(getContext(), R.xml.keyboard_car_number_provinces);
         setKeyboard(mProvincesKeyBoard);
-        setPreviewEnabled(false);// 无法再popupwindow上展示popupwindow，而预览恰恰就是一个popupwindow
-
+        setPreviewEnabled(false);// 不支持popup显示按钮
     }
 
     void switchToProvinces() {
@@ -104,14 +103,19 @@ class VehicleKeyboardView extends KeyboardView {
 
             // 1 绘制按钮的背景（左右-3dp 上下-6dp）
             Drawable dr;
-            if (Arrays.asList(
+            if (key.codes[0] == 10086) {
+                if (key.pressed)
+                    dr = ContextCompat.getDrawable(getContext(), R.drawable.bg_keyboard_gray);
+                else
+                    dr = null;
+            } else if (Arrays.asList(
                     Keyboard.KEYCODE_CANCEL,
                     "ABC".hashCode(),
                     "中文".hashCode(),
                     Keyboard.KEYCODE_DELETE).contains(key.codes[0])) {
-                dr = ContextCompat.getDrawable(getContext(), R.drawable.bg_keyboard_gray);
+                dr = ContextCompat.getDrawable(getContext(), key.pressed ? R.drawable.bg_keyboard_white : R.drawable.bg_keyboard_gray);
             } else {
-                dr = ContextCompat.getDrawable(getContext(), R.drawable.bg_keyboard_white);
+                dr = ContextCompat.getDrawable(getContext(), key.pressed ? R.drawable.bg_keyboard_gray : R.drawable.bg_keyboard_white);
             }
 
             rectBound.left = key.x + _3dpToPx;
@@ -131,11 +135,7 @@ class VehicleKeyboardView extends KeyboardView {
                 } else {
                     paint.setTextSize(rectBound.height() - 4 * _6dpToPx);
                 }
-                if (key.codes[0] == Keyboard.KEYCODE_DONE) {
-                    paint.setColor(getContext().getResources().getColor(R.color.text_333));
-                } else {
-                    paint.setColor(getContext().getResources().getColor(R.color.text_333));
-                }
+                paint.setColor(getContext().getResources().getColor(R.color.text_333));
 
                 rectText.left = key.x;
                 rectText.top = key.y;
@@ -151,10 +151,10 @@ class VehicleKeyboardView extends KeyboardView {
 
             // 3 绘制图标
             if (key.icon != null) {
-                rectIcon.left = rectBound.left + _15dpToPx;
-                rectIcon.top = rectBound.top + _15dpToPx;
-                rectIcon.right = rectBound.right - _15dpToPx;
-                rectIcon.bottom = rectBound.bottom - _15dpToPx;
+                rectIcon.left = rectBound.centerX() - _32dpToPx / 2;
+                rectIcon.right = rectBound.centerX() + _32dpToPx / 2;
+                rectIcon.top = rectBound.centerY() - _32dpToPx / 2;
+                rectIcon.bottom = rectBound.centerY() + _32dpToPx / 2;
 
                 key.icon.setBounds(rectIcon);
                 key.icon.draw(canvas);

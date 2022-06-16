@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:keyWidth="10%p"
-    android:keyHeight="60dp">
-    <Row>
+    android:keyWidth="10%p">
+    <Row android:keyHeight="60dp">
         <Key
             android:codes="20140"
             android:keyLabel="京" />
@@ -34,7 +33,7 @@
             android:codes="33487"
             android:keyLabel="苏" />
     </Row>
-    <Row>
+    <Row android:keyHeight="60dp">
         <Key
             android:codes="27993"
             android:keyLabel="浙" />
@@ -66,7 +65,7 @@
             android:codes="29756"
             android:keyLabel="琼" />
     </Row>
-    <Row>
+    <Row android:keyHeight="60dp">
         <Key
             android:codes="24029"
             android:keyLabel="川" />
@@ -98,7 +97,7 @@
             android:codes="26032"
             android:keyLabel="新" />
     </Row>
-    <Row>
+    <Row android:keyHeight="60dp">
         <Key
             android:codes="64578"
             android:keyWidth="15%p"
@@ -127,6 +126,13 @@
         <Key
             android:codes="-5"
             android:keyWidth="15%p"
-            android:keyIcon="@drawable/ic_del" />
+            android:keyIcon="@drawable/ic_keyboard_del" />
+    </Row>
+
+    <Row android:keyHeight="44dp">
+        <Key
+            android:codes="10086"
+            android:keyWidth="100%p"
+            android:keyIcon="@drawable/ic_keyboard_close" />
     </Row>
 </Keyboard>

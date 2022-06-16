@@ -94,7 +94,10 @@ public class VehicleKeyboardHelper {
             @Override
             public boolean onKeyEvent(int primaryCode, int[] keyCodes) {
                 String s = et.getText().toString();
-                if ("ABC".hashCode() == primaryCode) {
+                if (keyCodes[0] == 10086) {
+                    hideCustomInput(et);
+                    return true;
+                } else if ("ABC".hashCode() == primaryCode) {
                     keyboard.switchToLetters();
                     return true;
                 } else if ("中文".hashCode() == primaryCode) {
