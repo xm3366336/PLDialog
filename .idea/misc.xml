@@ -20,6 +20,7 @@
         <entry key="Library/src/main/res/drawable/ic_keyboard_del.xml" value="0.271" />
         <entry key="Library/src/main/res/drawable/ic_keyborad_close.xml" value="0.271" />
         <entry key="Library/src/main/res/layout/pl_dialog.xml" value="0.2390625" />
+        <entry key="Library/src/main/res/layout/pl_dialog_photo_preview.xml" value="0.44166666666666665" />
         <entry key="app/res/layout/content_main.xml" value="0.4348717948717949" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.44166666666666665" />
       </map>
