@@ -17,7 +17,8 @@
         <attr name="KB_BtnBottomLeft_text" format="string" />
         <!-- 右下角的按钮显示什么图片 -->
         <attr name="KB_BtnBottomRight_img" format="reference" />
-
+        <!-- 字母是否使用大写值 -->
+        <attr name="KB_AllCap" format="boolean" />
     </declare-styleable>
 
 </resources>

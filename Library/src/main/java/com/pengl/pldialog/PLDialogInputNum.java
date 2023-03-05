@@ -3,19 +3,18 @@ package com.pengl.pldialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.pengl.pldialog.util.ICallBack;
 import com.pengl.pldialog.view.ViewKeyboard;
+import com.pengl.pldialog.view.ViewKeyboardHex;
 
 /**
  * 输入数字
@@ -28,21 +27,32 @@ public class PLDialogInputNum extends Dialog {
     private int maxLength;// 最大长度
 
     private final AppCompatTextView tvNum;
-    private final ViewKeyboard mViewKeyboard;
+    private ViewKeyboard mViewKeyboard;
+    private ViewKeyboardHex mViewKeyboardHex;
     private final AppCompatImageButton btn_del;
 
     public enum TYPE {
         NORMAL, // 正常输入数字
         IDCARD, // 输入身份证号码
         PHONE,  // 11位的手机号码
+        HEX16,  // 16进制的数字
     }
 
     public PLDialogInputNum(Context context) {
+        this(context, TYPE.NORMAL);
+    }
+
+    public PLDialogInputNum(Context context, TYPE showType) {
         super(context, R.style.PLAppDialog_TransBg_PushInOut);
-        setContentView(R.layout.pl_dialog_input_num);
+        setContentView(showType == TYPE.HEX16 ? R.layout.pl_dialog_input_hex : R.layout.pl_dialog_input_num);
         tvNum = findViewById(R.id.tv_num);
-        mViewKeyboard = findViewById(R.id.mViewKeyboard);
         btn_del = findViewById(R.id.btn_del);
+        if (showType == TYPE.HEX16) {
+            mViewKeyboardHex = findViewById(R.id.mViewKeyboard);
+        } else {
+            mViewKeyboard = findViewById(R.id.mViewKeyboard);
+        }
+        this.showType = showType;
     }
 
     /**
@@ -83,6 +93,14 @@ public class PLDialogInputNum extends Dialog {
         return btn_del;
     }
 
+    public ViewKeyboard getViewKeyboard() {
+        return mViewKeyboard;
+    }
+
+    public ViewKeyboardHex getViewKeyboardHex() {
+        return mViewKeyboardHex;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,48 +112,86 @@ public class PLDialogInputNum extends Dialog {
         getWindow().setAttributes(lp);
 
         findViewById(R.id.btn_close).setOnClickListener(view -> dismiss());
-        btn_del.setOnClickListener(view -> {
-            if (tvNum.getText().toString().length() <= 0) {
-                return;
-            }
-
-            tvNum.setText(tvNum.getText().toString().substring(0, tvNum.getText().length() - 1));
-            if (tvNum.getText().length() <= 0) {
-                btn_del.setVisibility(View.GONE);
-            }
-
-            if (showType == TYPE.IDCARD) {
-                mViewKeyboard.setKeyboardBLShow(tvNum.getText().toString().length() == maxLength - 1);
-            }
+        btn_del.setOnClickListener(view -> btnDel());
+        btn_del.setOnLongClickListener(view -> {
+            tvNum.setText("");
+            btn_del.setVisibility(View.GONE);
+            return false;
         });
 
-        mViewKeyboard.setOnKeyboardClickListener(new ViewKeyboard.OnKeyboardClickListener() {
-            @Override
-            public void onKeyDown(String s) {
-                if (tvNum.getText().toString().length() >= maxLength) {
-                    return;
+        if (null != mViewKeyboard) {
+            mViewKeyboard.setOnKeyboardClickListener(new ViewKeyboard.OnKeyboardClickListener() {
+                @Override
+                public void onKeyDown(String s) {
+                    if (tvNum.getText().toString().length() >= maxLength) {
+                        return;
+                    }
+
+                    btn_del.setVisibility(View.VISIBLE);
+                    tvNum.setText(tvNum.getText().toString() + s);
+                    if (showType == TYPE.IDCARD) {
+                        mViewKeyboard.setKeyboardBLShow(tvNum.getText().toString().length() == maxLength - 1);
+                    }
                 }
 
-                btn_del.setVisibility(View.VISIBLE);
-                tvNum.setText(tvNum.getText().toString() + s);
-                if (showType == TYPE.IDCARD) {
-                    mViewKeyboard.setKeyboardBLShow(tvNum.getText().toString().length() == maxLength - 1);
-                }
-            }
-
-            @Override
-            public void onKeyDownBottomRight() {
-                if (null != callback) {
-                    callback.onCallBack(tvNum.getText().toString());
+                @Override
+                public void onKeyDownBottomRight() {
+                    btnOK();
                 }
 
-                dismiss();
-            }
+                @Override
+                public void onKeyDownLongBottomRight() {
+                }
+            });
+        }
 
-            @Override
-            public void onKeyDownLongBottomRight() {
-            }
-        });
+        if (null != mViewKeyboardHex) {
+            mViewKeyboardHex.setOnKeyboardClickListener(new ViewKeyboardHex.OnKeyboardClickListener() {
+                @Override
+                public void onKeyDown(String num) {
+                    if (maxLength > 0 && tvNum.getText().toString().length() >= maxLength) {
+                        return;
+                    }
+
+                    btn_del.setVisibility(View.VISIBLE);
+                    tvNum.setText(tvNum.getText().toString() + num);
+                }
+
+                @Override
+                public void onKeyDownClean() {
+                    tvNum.setText("");
+                    btn_del.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onKeyDownFinish() {
+                    btnOK();
+                }
+            });
+        }
+    }
+
+    private void btnDel() {
+        if (tvNum.getText().toString().length() <= 0) {
+            return;
+        }
+
+        tvNum.setText(tvNum.getText().toString().substring(0, tvNum.getText().length() - 1));
+        if (tvNum.getText().length() <= 0) {
+            btn_del.setVisibility(View.GONE);
+        }
+
+        if (showType == TYPE.IDCARD) {
+            mViewKeyboard.setKeyboardBLShow(tvNum.getText().toString().length() == maxLength - 1);
+        }
+    }
+
+    private void btnOK() {
+        if (null != callback) {
+            callback.onCallBack(tvNum.getText().toString());
+        }
+
+        dismiss();
     }
 
     @Override

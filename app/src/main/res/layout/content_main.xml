@@ -143,9 +143,18 @@
                 style="@style/item_main_btn_style"
                 android:layout_marginStart="8dip"
                 android:layout_marginTop="0dip"
+                android:layout_marginEnd="8dip"
                 android:layout_weight="1"
                 android:onClick="OnClickInputIdCard"
                 android:text="输入身份证" />
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginStart="8dip"
+                android:layout_marginTop="0dip"
+                android:layout_weight="1"
+                android:onClick="OnClickInputHex16"
+                android:text="输入16进制" />
         </LinearLayout>
 
         <Button

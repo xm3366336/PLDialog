@@ -1,11 +1,19 @@
 package com.pengl.PLDialog;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pengl.pldialog.PLDialog;
@@ -19,19 +27,6 @@ import com.pengl.pldialog.PLDialogTips;
 import com.pengl.pldialog.PLDialogTipsSucc;
 import com.pengl.pldialog.PLToast;
 import com.pengl.pldialog.vehicle.VehicleKeyboardHelper;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.Gravity;
-import android.view.View;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -140,6 +135,16 @@ public class MainActivity extends AppCompatActivity {
             String input = (String) params[0];
             Toast.makeText(MainActivity.this, input, Toast.LENGTH_SHORT).show();
         });
+        dialog.show();
+    }
+
+    public void OnClickInputHex16(View v) {
+        PLDialogInputNum dialog = new PLDialogInputNum(this, PLDialogInputNum.TYPE.HEX16);
+        dialog.setCallback(params -> {
+            String input = (String) params[0];
+            Toast.makeText(MainActivity.this, input, Toast.LENGTH_SHORT).show();
+        });
+        dialog.getViewKeyboardHex().setKeyboardAllCap(true);
         dialog.show();
     }
 

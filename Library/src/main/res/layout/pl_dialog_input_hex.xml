@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/pld_default_bg"
+    android:keepScreenOn="true">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_num"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:ellipsize="start"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center_vertical"
+        android:letterSpacing="0.1"
+        android:lineSpacingExtra="20dip"
+        android:paddingStart="16dip"
+        android:paddingTop="40dip"
+        android:paddingEnd="48dip"
+        android:paddingBottom="40dip"
+        android:singleLine="true"
+        android:textColor="@color/text_333"
+        android:textSize="@dimen/text_size_55"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="139" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_del"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dip"
+        android:background="@drawable/list_selector_r64"
+        android:src="@mipmap/pld_keyboard_del_dark"
+        app:layout_constraintBottom_toBottomOf="@id/tv_num"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_num" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_close"
+        android:layout_width="48dip"
+        android:layout_height="48dip"
+        android:background="@drawable/list_selector"
+        android:padding="8dip"
+        android:src="@drawable/ic_baseline_close_24"
+        android:tint="@color/text_666"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.pengl.pldialog.view.ViewKeyboardHex
+        android:id="@+id/mViewKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:KB_Theme="dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_num" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

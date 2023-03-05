@@ -36,4 +36,16 @@
         <item name="android:windowExitAnimation">@anim/push_exit</item>
     </style>
 
+    <style name="PLKeyboardBtn">
+        <item name="android:layout_height">72dip</item>
+        <item name="android:layout_marginStart">2dip</item>
+        <item name="android:layout_marginEnd">2dip</item>
+        <item name="android:background">@drawable/list_selector_white</item>
+        <item name="android:textColor">@color/text_666_to_999</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
 </resources>
