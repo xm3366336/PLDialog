@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="240dip"
-        android:layout_height="wrap_content"
-        android:background="@drawable/pld_dialog_full"
-        android:gravity="center_vertical"
-        android:paddingTop="48dip"
-        android:paddingBottom="32dip">
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bg"
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/space1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeStyleR4" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_tips_succ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:src="@mipmap/pld_tips_succ" />
+            android:layout_marginTop="48dip"
+            android:src="@mipmap/pld_tips_succ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/succ_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ic_tips_succ"
-            android:layout_centerHorizontal="true"
             android:layout_marginLeft="24dip"
             android:layout_marginTop="48dip"
             android:layout_marginRight="24dip"
@@ -33,14 +43,15 @@
             android:textColor="@color/text_333"
             android:textSize="@dimen/text_size_24"
             android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ic_tips_succ"
             tools:text="编译成功" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/succ_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/succ_title"
-            android:layout_centerHorizontal="true"
             android:layout_marginLeft="24dip"
             android:layout_marginTop="8dip"
             android:layout_marginRight="24dip"
@@ -48,9 +59,19 @@
             android:textColor="@color/text_666"
             android:textSize="@dimen/text_size_14"
             android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/succ_title"
             tools:text="这是描述" />
 
-    </RelativeLayout>
+        <Space
+            android:id="@+id/space1"
+            android:layout_width="wrap_content"
+            android:layout_height="32dip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/succ_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_close"

@@ -8,29 +8,30 @@ import android.text.Selection;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.ShapeAppearanceModel;
 import com.pengl.pldialog.util.ICallBack;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 通用的输入框
  */
 public class PLDialogInput extends Dialog {
 
-    private final View viewBg;
+    private final ShapeableImageView bg;
     private final AppCompatTextView tv_title, tv_title_sub;
     private final AppCompatEditText etInput;
     private final AppCompatButton btn_confirm, btn_cancel;
@@ -42,7 +43,7 @@ public class PLDialogInput extends Dialog {
     public PLDialogInput(Context context) {
         super(context, R.style.PLAppDialog_TransBg_PushInOut);
         setContentView(R.layout.pl_dialog_input);
-        viewBg = findViewById(R.id.bg);
+        bg = findViewById(R.id.bg);
         etInput = findViewById(R.id.et_input);
         tv_title = findViewById(R.id.tv_title);
         tv_title_sub = findViewById(R.id.tv_title_sub);
@@ -117,8 +118,8 @@ public class PLDialogInput extends Dialog {
         return etInput;
     }
 
-    public View getViewBg() {
-        return viewBg;
+    public ShapeableImageView getBg() {
+        return bg;
     }
 
     public AppCompatTextView getTextViewTitle() {
@@ -135,6 +136,19 @@ public class PLDialogInput extends Dialog {
 
     public AppCompatButton getBtnCancel() {
         return btn_cancel;
+    }
+
+    /**
+     * 设置圆角的大小
+     *
+     * @param cornerSizeDip 默认是4dip，单位dip
+     */
+    public PLDialogInput setBgRounded(int cornerSizeDip) {
+        bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
+                .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                .build());
+        return this;
     }
 
     @Override
@@ -195,4 +209,5 @@ public class PLDialogInput extends Dialog {
         }
         super.show();
     }
+
 }

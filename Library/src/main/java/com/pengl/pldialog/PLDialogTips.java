@@ -3,18 +3,23 @@ package com.pengl.pldialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.text.Spanned;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
+
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.ShapeAppearanceModel;
 
 /**
  * 一个简单的提示
  */
 public class PLDialogTips extends Dialog {
 
-    TextView tv_title, tv_content, tv_ok;
+    AppCompatTextView tv_title, tv_content, tv_ok;
     View btn_close;
     View.OnClickListener OnClickOK, OnClickCancel;
+    ShapeableImageView bg;
 
     public PLDialogTips setOnClickOK(View.OnClickListener onClickOK) {
         OnClickOK = onClickOK;
@@ -39,6 +44,7 @@ public class PLDialogTips extends Dialog {
     private void init(String content) {
         setContentView(R.layout.pl_dialog_tips);
         setCanceledOnTouchOutside(false);
+        bg = findViewById(R.id.bg);
         tv_title = findViewById(R.id.tv_title);
         tv_content = findViewById(R.id.tv_content);
         btn_close = findViewById(R.id.btn_close);
@@ -59,11 +65,11 @@ public class PLDialogTips extends Dialog {
         });
     }
 
-    public TextView getTitleView() {
+    public AppCompatTextView getTitleView() {
         return tv_title;
     }
 
-    public TextView getContentView() {
+    public AppCompatTextView getContentView() {
         return tv_content;
     }
 
@@ -94,22 +100,25 @@ public class PLDialogTips extends Dialog {
     }
 
     /**
-     * 设置内容的对齐方式
-     * 默认居中对齐，如果文字较多，建议修改为左对齐
-     *
-     * @param gravity android.view.Gravity
-     * @deprecated use getContentView().setGravity(int gravity)
-     */
-    @Deprecated
-    public void setGravity(int gravity) {
-        tv_content.setGravity(gravity);
-    }
-
-    /**
      * 显示关闭按钮，默认是不显示的
      */
     public PLDialogTips setShowBtnClose() {
         btn_close.setVisibility(View.VISIBLE);
         return this;
+    }
+
+    /**
+     * 设置圆角的大小
+     *
+     * @param cornerSizeDip 默认是4dip，单位dip
+     */
+    public PLDialogTips setBgRounded(int cornerSizeDip) {
+        bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
+                .setAllCorners(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0)).build());
+        return this;
+    }
+
+    public ShapeableImageView getBg() {
+        return bg;
     }
 }

@@ -12,6 +12,9 @@ import android.view.WindowManager;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.ShapeAppearanceModel;
 import com.pengl.pldialog.util.ICallBack;
 import com.pengl.pldialog.view.ViewKeyboard;
 import com.pengl.pldialog.view.ViewKeyboardHex;
@@ -26,6 +29,7 @@ public class PLDialogInputNum extends Dialog {
     private ICallBack callback;
     private int maxLength;// 最大长度
 
+    private final ShapeableImageView bg;
     private final AppCompatTextView tvNum;
     private ViewKeyboard mViewKeyboard;
     private ViewKeyboardHex mViewKeyboardHex;
@@ -45,6 +49,7 @@ public class PLDialogInputNum extends Dialog {
     public PLDialogInputNum(Context context, TYPE showType) {
         super(context, R.style.PLAppDialog_TransBg_PushInOut);
         setContentView(showType == TYPE.HEX16 ? R.layout.pl_dialog_input_hex : R.layout.pl_dialog_input_num);
+        bg = findViewById(R.id.bg);
         tvNum = findViewById(R.id.tv_num);
         btn_del = findViewById(R.id.btn_del);
         if (showType == TYPE.HEX16) {
@@ -99,6 +104,23 @@ public class PLDialogInputNum extends Dialog {
 
     public ViewKeyboardHex getViewKeyboardHex() {
         return mViewKeyboardHex;
+    }
+
+    /**
+     * 设置圆角的大小
+     *
+     * @param cornerSizeDip 默认是4dip，单位dip
+     */
+    public PLDialogInputNum setBgRounded(int cornerSizeDip) {
+        bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
+                .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                .build());
+        return this;
+    }
+
+    public ShapeableImageView getBg() {
+        return bg;
     }
 
     @Override

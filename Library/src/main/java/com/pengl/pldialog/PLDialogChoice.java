@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.ShapeAppearanceModel;
 
 /**
  * Created by pengl on 2017/3/21.
@@ -21,15 +24,17 @@ public class PLDialogChoice extends BottomSheetDialog {
 
     private final int margins;
 
-    private final Button btn_cancel;
-    private final TextView tv_title, tv_content;
+    private final AppCompatButton btn_cancel;
+    private final AppCompatTextView tv_title, tv_content;
     private final LinearLayout layout_btns;
+    private final ShapeableImageView bg;
 
     private OnClickListener onConfirmListener;
 
     public PLDialogChoice(Context context) {
-        super(context);
+        super(context, R.style.PLAppDialog_TransBg_PushInOut);
         setContentView(R.layout.pl_dialog_choice);
+        this.bg = findViewById(R.id.bg);
         this.btn_cancel = findViewById(R.id.btn_cancel);
         this.tv_title = findViewById(R.id.tv_title);
         this.tv_content = findViewById(R.id.tv_content);
@@ -136,4 +141,32 @@ public class PLDialogChoice extends BottomSheetDialog {
         return btn;
     }
 
+    /**
+     * 设置圆角的大小
+     *
+     * @param cornerSizeDip 默认是4dip，单位dip
+     */
+    public PLDialogChoice setBgRounded(int cornerSizeDip) {
+        bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
+                .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                .build());
+        return this;
+    }
+
+    public ShapeableImageView getBg() {
+        return bg;
+    }
+
+    public AppCompatTextView getTvTitle() {
+        return tv_title;
+    }
+
+    public AppCompatTextView getTvContent() {
+        return tv_content;
+    }
+
+    public AppCompatButton getBtnCancel() {
+        return btn_cancel;
+    }
 }

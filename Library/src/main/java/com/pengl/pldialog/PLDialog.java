@@ -7,13 +7,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.ShapeAppearanceModel;
+
 /**
  * 简单的dialog窗口
  */
 public class PLDialog extends Dialog {
 
     TextView tv_title, tv_content;
-    AppCompatButton btn_confirm, btn_cancel;
+    AppCompatButton btn_confirm, btn_cancel, btn_other;
+    ShapeableImageView bg;
 
     View.OnClickListener OnClickOK, OnClickCancel;
 
@@ -42,10 +47,12 @@ public class PLDialog extends Dialog {
     }
 
     private void init() {
+        bg = findViewById(R.id.bg);
         tv_title = findViewById(R.id.tv_title);
         tv_content = findViewById(R.id.tv_content);
         btn_confirm = findViewById(R.id.btn_confirm);
         btn_cancel = findViewById(R.id.btn_cancel);
+        btn_other = findViewById(R.id.btn_other);
 
         btn_confirm.setOnClickListener(view -> {
             if (null != OnClickOK) {
@@ -91,4 +98,30 @@ public class PLDialog extends Dialog {
         return this;
     }
 
+    /**
+     * 设置圆角的大小
+     *
+     * @param cornerSizeDip 默认是4dip，单位dip
+     */
+    public PLDialog setBgRounded(int cornerSizeDip) {
+        bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
+                .setAllCorners(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0)).build());
+        return this;
+    }
+
+    public ShapeableImageView getBg() {
+        return bg;
+    }
+
+    public AppCompatButton getBtnConfirm() {
+        return btn_confirm;
+    }
+
+    public AppCompatButton getBtnCancel() {
+        return btn_cancel;
+    }
+
+    public AppCompatButton getBtnOther() {
+        return btn_other;
+    }
 }

@@ -8,18 +8,27 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="320dip"
-        android:layout_height="wrap_content"
-        android:background="@drawable/pld_dialog_full"
-        android:padding="16dip">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bg"
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/space1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeStyleR4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dip"
+            android:layout_marginTop="24dip"
             android:gravity="center"
-            android:paddingStart="8dip"
-            android:paddingEnd="8dip"
+            android:paddingStart="16dip"
+            android:paddingEnd="16dip"
             android:textColor="@color/text_333"
             android:textSize="@dimen/text_size_18"
             android:textStyle="bold"
@@ -30,13 +39,12 @@
             tools:text="这是标题"
             tools:visibility="visible" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingTop="32dip"
-            android:paddingBottom="32dip"
+            android:padding="32dip"
             android:textColor="#4F5A67"
             android:textSize="@dimen/text_size_16"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,10 +55,12 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_marginStart="8dip"
+            android:layout_marginEnd="8dip"
             android:background="@color/divider"
             app:layout_constraintTop_toBottomOf="@id/tv_content" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_ok"
             android:layout_width="match_parent"
             android:layout_height="48dip"
@@ -63,18 +73,26 @@
             android:textSize="@dimen/text_size_14"
             app:layout_constraintTop_toBottomOf="@id/tv_content" />
 
+        <Space
+            android:id="@+id/space1"
+            android:layout_width="wrap_content"
+            android:layout_height="8dip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_ok" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_close"
         android:layout_width="64dip"
         android:layout_height="64dip"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dip"
         android:background="@drawable/list_selector_r64_trans"
+        android:scaleType="center"
         android:src="@drawable/ic_baseline_close_24"
         android:tint="@color/text_aaa"
         android:visibility="gone"
         tools:ignore="ContentDescription"
         tools:visibility="visible" />
+
 </LinearLayout>
