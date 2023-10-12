@@ -1,4 +1,4 @@
-package com.pengl.PLDialog;
+package com.pengl.demo.dialog;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickPhotoPreview(View v) {
-        PLDialogPhotoPreview dialog = new PLDialogPhotoPreview(this, "http://oss.luokj.com/github/other/pay.jpg");
+        PLDialogPhotoPreview dialog = new PLDialogPhotoPreview(this, "https://pengl.com/res/pic/pengl_com_weixin_code.png");
         dialog.setOnLongClickListener(view -> {
             OnClickChoose(view);
             return true;
