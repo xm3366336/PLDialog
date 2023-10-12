@@ -19,4 +19,4 @@ implementation 'com.github.xm3366336:PLDialog:1.3.0'
 
 > 2、看Demo中的MainActivity即可
 
-[MainActivity](https://github.com/xm3366336/PLDialog/blob/main/app/src/main/java/com/pengl/pldialog/demo/MainActivity.java)
+[MainActivity](https://github.com/xm3366336/PLDialog/blob/main/app/src/main/java/com/pengl/demo/dialog/MainActivity.java)
