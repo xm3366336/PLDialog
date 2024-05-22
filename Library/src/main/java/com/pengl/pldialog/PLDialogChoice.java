@@ -17,6 +17,8 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.ShapeAppearanceModel;
 
+import java.util.Objects;
+
 /**
  * Created by pengl on 2017/3/21.
  */
@@ -32,7 +34,7 @@ public class PLDialogChoice extends BottomSheetDialog {
     private OnClickListener onConfirmListener;
 
     public PLDialogChoice(Context context) {
-        super(context, R.style.PLAppDialog_TransBg_PushInOut);
+        super(context, R.style.PLAppDialog_TransBg);
         setContentView(R.layout.pl_dialog_choice);
         this.bg = findViewById(R.id.bg);
         this.btn_cancel = findViewById(R.id.btn_cancel);
@@ -96,6 +98,7 @@ public class PLDialogChoice extends BottomSheetDialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Objects.requireNonNull(getWindow()).setWindowAnimations(R.style.PLKeyboardStyle);
 
         btn_cancel.setOnClickListener(view -> {
             if (null != onConfirmListener) {

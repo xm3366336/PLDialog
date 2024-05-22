@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/bg"
+        android:layout_width="320dip"
+        android:layout_height="0dip"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/btn_confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dip"
+        android:layout_marginTop="24dip"
+        android:layout_marginEnd="24dip"
+        android:textColor="@color/text_333"
+        android:textSize="@dimen/text_size_18"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/bg"
+        app:layout_constraintStart_toStartOf="@id/bg"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="请输入手机号码" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_sub"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:textColor="@color/text_666"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        tools:text="副标题" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_input"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dip"
+        android:background="@android:color/transparent"
+        android:hint="请输入..."
+        android:minHeight="40dip"
+        android:paddingStart="8dip"
+        android:paddingTop="16dip"
+        android:paddingEnd="8dip"
+        android:paddingBottom="8dip"
+        android:textColor="?colorPrimary"
+        android:textColorHint="@color/text_ccc"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_sub" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="0dip"
+        android:layout_height="1px"
+        android:layout_marginTop="16dip"
+        android:background="@color/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_input" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="1px"
+        android:layout_height="0dip"
+        android:background="@color/divider"
+        app:layout_constraintBottom_toBottomOf="@id/btn_confirm"
+        app:layout_constraintStart_toStartOf="@id/btn_confirm"
+        app:layout_constraintTop_toTopOf="@id/btn_confirm" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_confirm"
+        android:layout_width="0dip"
+        android:layout_height="48dip"
+        android:background="@drawable/list_selector"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/pld_edit_activated_color"
+        android:textSize="@dimen/text_size_14"
+        app:layout_constraintEnd_toEndOf="@id/bg"
+        app:layout_constraintStart_toEndOf="@id/btn_cancel"
+        app:layout_constraintTop_toBottomOf="@id/line1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="0dip"
+        android:layout_height="0dip"
+        android:background="@drawable/list_selector"
+        android:gravity="center"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dip"
+        android:text="取消"
+        android:textColor="#6B7886"
+        android:textSize="@dimen/text_size_14"
+        app:layout_constraintBottom_toBottomOf="@id/btn_confirm"
+        app:layout_constraintEnd_toStartOf="@id/btn_confirm"
+        app:layout_constraintStart_toStartOf="@id/bg"
+        app:layout_constraintTop_toTopOf="@id/btn_confirm" />
+</androidx.constraintlayout.widget.ConstraintLayout>

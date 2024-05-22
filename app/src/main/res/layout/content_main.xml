@@ -48,7 +48,7 @@
                 android:layout_marginEnd="8dip"
                 android:layout_weight="1"
                 android:onClick="OnClickLoad1"
-                android:text="显示加载中1" />
+                android:text="加载中1" />
 
             <Button
                 style="@style/item_main_btn_style"
@@ -56,14 +56,30 @@
                 android:layout_marginTop="0dip"
                 android:layout_weight="1"
                 android:onClick="OnClickLoad2"
-                android:text="显示加载中2" />
+                android:text="加载中2" />
         </LinearLayout>
 
-        <Button
-            style="@style/item_main_btn_style"
-            android:onClick="OnClickDialog"
-            android:text="简单的Dialog窗口"
-            android:textAllCaps="false" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginEnd="8dip"
+                android:layout_weight="1"
+                android:onClick="OnClickDialog1"
+                android:text="Dialog窗口1"
+                android:textAllCaps="false" />
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginStart="8dip"
+                android:layout_weight="1"
+                android:onClick="OnClickDialog2"
+                android:text="Dialog窗口2"
+                android:textAllCaps="false" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,8 +126,17 @@
                 android:layout_marginTop="0dip"
                 android:layout_marginEnd="8dip"
                 android:layout_weight="1"
-                android:onClick="OnClickInputText"
-                android:text="输入文字" />
+                android:onClick="OnClickInputText1"
+                android:text="输入文字1" />
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginStart="8dip"
+                android:layout_marginTop="0dip"
+                android:layout_marginEnd="8dip"
+                android:layout_weight="1"
+                android:onClick="OnClickInputText2"
+                android:text="输入文字2" />
 
             <EditText
                 android:id="@+id/et_vehicle"

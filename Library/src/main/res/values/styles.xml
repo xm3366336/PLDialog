@@ -26,7 +26,7 @@
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
 
-    <style name="PLAnimationPushInOut">
+    <style name="PLAnimationPushInOut" parent="@android:style/Animation.Dialog">
         <item name="android:windowEnterAnimation">@anim/push_enter</item>
         <item name="android:windowExitAnimation">@anim/push_exit</item>
     </style>

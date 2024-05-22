@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.LayoutRes;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -31,18 +32,30 @@ import java.util.TimerTask;
  */
 public class PLDialogInput extends Dialog {
 
-    private final ShapeableImageView bg;
-    private final AppCompatTextView tv_title, tv_title_sub;
-    private final AppCompatEditText etInput;
-    private final AppCompatButton btn_confirm, btn_cancel;
+    private ShapeableImageView bg;
+    private AppCompatTextView tv_title, tv_title_sub;
+    private AppCompatEditText etInput;
+    private AppCompatButton btn_confirm, btn_cancel;
     private ICallBack callback;
 
     private boolean isMustInput;// 是否必须输入，默认是的
     private boolean isShowKeyboard;// 是否弹出键盘
 
+    private int showType = 0;// 显示样式
+
     public PLDialogInput(Context context) {
-        super(context, R.style.PLAppDialog_TransBg_PushInOut);
-        setContentView(R.layout.pl_dialog_input);
+        super(context, R.style.PLAppDialog_TransBg);
+        init(R.layout.pl_dialog_input);
+    }
+
+    public PLDialogInput(Context context, int showType) {
+        super(context, R.style.PLAppDialog_TransBg);
+        this.showType = showType;
+        init(showType == 2 ? R.layout.pl_dialog_input_2 : R.layout.pl_dialog_input);
+    }
+
+    private void init(@LayoutRes int layoutResID) {
+        setContentView(layoutResID);
         bg = findViewById(R.id.bg);
         etInput = findViewById(R.id.et_input);
         tv_title = findViewById(R.id.tv_title);
@@ -144,10 +157,15 @@ public class PLDialogInput extends Dialog {
      * @param cornerSizeDip 默认是4dip，单位dip
      */
     public PLDialogInput setBgRounded(int cornerSizeDip) {
-        bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
-                .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
-                .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
-                .build());
+        if (showType == 2) {
+            bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
+                    .setAllCorners(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0)).build());
+        } else {
+            bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
+                    .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                    .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                    .build());
+        }
         return this;
     }
 
@@ -155,11 +173,16 @@ public class PLDialogInput extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        lp.gravity = Gravity.BOTTOM;
-        getWindow().setAttributes(lp);
+        if (showType == 2) {
+
+        } else {
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            lp.gravity = Gravity.BOTTOM;
+            getWindow().setAttributes(lp);
+            getWindow().setWindowAnimations(R.style.PLKeyboardStyle);
+        }
 
         btn_cancel.setOnClickListener(v -> dismiss());
         btn_confirm.setOnClickListener(view -> {

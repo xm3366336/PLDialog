@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.LayoutRes;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.android.material.imageview.ShapeableImageView;
@@ -32,21 +33,24 @@ public class PLDialog extends Dialog {
 
     public PLDialog(Context context) {
         super(context, R.style.PLAppDialog_TransBg);
-        setContentView(R.layout.pl_dialog);
-        setCanceledOnTouchOutside(false);
-        init();
+        init(R.layout.pl_dialog);
+    }
+
+    public PLDialog(Context context, int style) {
+        super(context, R.style.PLAppDialog_TransBg);
+        init(style == 2 ? R.layout.pl_dialog_2 : R.layout.pl_dialog);
     }
 
     public PLDialog(Context context, String title, String content) {
         super(context, R.style.PLAppDialog_TransBg);
-        setContentView(R.layout.pl_dialog);
-        setCanceledOnTouchOutside(false);
-        init();
+        init(R.layout.pl_dialog);
         setTitle(title);
         setContent(content);
     }
 
-    private void init() {
+    private void init(@LayoutRes int layoutResID) {
+        setContentView(layoutResID);
+        setCanceledOnTouchOutside(false);
         bg = findViewById(R.id.bg);
         tv_title = findViewById(R.id.tv_title);
         tv_content = findViewById(R.id.tv_content);
@@ -111,6 +115,14 @@ public class PLDialog extends Dialog {
 
     public ShapeableImageView getBg() {
         return bg;
+    }
+
+    public TextView getTvTitle() {
+        return tv_title;
+    }
+
+    public TextView getTvContent() {
+        return tv_content;
     }
 
     public AppCompatButton getBtnConfirm() {

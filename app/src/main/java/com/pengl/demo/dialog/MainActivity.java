@@ -99,19 +99,44 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void OnClickDialog(View v) {
+    public void OnClickDialog1(View v) {
         PLDialog dialog = new PLDialog(this, "这是标题", "这里是内容这里是内容这里是内容这里是内容");
         dialog.setBgRounded(8);
         dialog.setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show());
         dialog.show();
     }
 
-    public void OnClickInputText(View v) {
+    public void OnClickDialog2(View v) {
+        PLDialog dialog = new PLDialog(this, 2);
+        dialog.setContent("这里是内容这里是内容这里是内容这里是内容");
+        dialog.getTvTitle().setVisibility(View.GONE);
+        dialog.setBgRounded(8);
+        dialog.setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show());
+        dialog.show();
+    }
+
+    public void OnClickInputText1(View v) {
         PLDialogInput dialog = new PLDialogInput(this);
         dialog.setTitle("请输入姓名");
         dialog.setTitleSub("为确保信息安全，请输入你的姓名，不超过5个字");
         dialog.setInputHint("最长5个字");
         dialog.setOriginContent("张三");
+        dialog.setBgRounded(24);
+        dialog.setCallback(params -> {
+            String input = (String) params[0];
+            Toast.makeText(MainActivity.this, input, Toast.LENGTH_SHORT).show();
+        });
+        dialog.show();
+    }
+
+    public void OnClickInputText2(View v) {
+        PLDialogInput dialog = new PLDialogInput(this, 2);
+        dialog.setTitle("请输入姓名");
+        dialog.setTitleSub("为确保信息安全，请输入你的姓名，不超过5个字");
+        dialog.setInputHint("最长5个字");
+        dialog.setOriginContent("张三");
+        dialog.getEditText().setBackgroundResource(R.drawable.bg_edit_default);
+        dialog.setShowKeyboard(false);
         dialog.setBgRounded(24);
         dialog.setCallback(params -> {
             String input = (String) params[0];

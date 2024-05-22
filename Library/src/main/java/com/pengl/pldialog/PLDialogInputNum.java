@@ -47,7 +47,7 @@ public class PLDialogInputNum extends Dialog {
     }
 
     public PLDialogInputNum(Context context, TYPE showType) {
-        super(context, R.style.PLAppDialog_TransBg_PushInOut);
+        super(context, R.style.PLAppDialog_TransBg);
         setContentView(showType == TYPE.HEX16 ? R.layout.pl_dialog_input_hex : R.layout.pl_dialog_input_num);
         bg = findViewById(R.id.bg);
         tvNum = findViewById(R.id.tv_num);
@@ -132,6 +132,7 @@ public class PLDialogInputNum extends Dialog {
         lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
         lp.gravity = Gravity.BOTTOM;
         getWindow().setAttributes(lp);
+        getWindow().setWindowAnimations(R.style.PLKeyboardStyle);
 
         findViewById(R.id.btn_close).setOnClickListener(view -> dismiss());
         btn_del.setOnClickListener(view -> btnDel());
