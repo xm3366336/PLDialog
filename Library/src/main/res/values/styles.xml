@@ -37,12 +37,12 @@
     </style>
 
     <style name="PLKeyboardBtn">
-        <item name="android:layout_height">72dip</item>
-        <item name="android:layout_marginStart">2dip</item>
-        <item name="android:layout_marginEnd">2dip</item>
+        <item name="android:layout_height">@dimen/pld_px_72</item>
+        <item name="android:layout_marginStart">@dimen/pld_px_2</item>
+        <item name="android:layout_marginEnd">@dimen/pld_px_2</item>
         <item name="android:background">@drawable/list_selector_white</item>
         <item name="android:textColor">@color/text_666_to_999</item>
-        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textSize">@dimen/pld_px_18</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:gravity">center</item>
         <item name="android:stateListAnimator">@null</item>
@@ -51,22 +51,22 @@
     <!--ShapeableImageView 圆角-->
     <style name="ShapeStyleR4">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">4dp</item>
+        <item name="cornerSize">@dimen/pld_px_4</item>
     </style>
 
     <style name="ShapeStyleR6">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">6dp</item>
+        <item name="cornerSize">@dimen/pld_px_6</item>
     </style>
 
     <style name="ShapeStyleR8">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">8dp</item>
+        <item name="cornerSize">@dimen/pld_px_8</item>
     </style>
 
     <style name="ShapeStyleR16">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">16dp</item>
+        <item name="cornerSize">@dimen/pld_px_16</item>
     </style>
 
     <style name="ShapeStyleOval">

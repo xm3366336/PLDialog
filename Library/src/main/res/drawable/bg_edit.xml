@@ -14,10 +14,10 @@
 -->
 
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:insetLeft="4dip"
-    android:insetTop="10dip"
-    android:insetRight="4dip"
-    android:insetBottom="7dip">
+    android:insetLeft="@dimen/pld_px_4"
+    android:insetTop="@dimen/pld_px_10"
+    android:insetRight="@dimen/pld_px_4"
+    android:insetBottom="@dimen/pld_px_6">
     <selector>
         <item android:state_enabled="false">
             <nine-patch

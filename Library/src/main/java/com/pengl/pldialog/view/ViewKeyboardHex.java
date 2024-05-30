@@ -50,7 +50,7 @@ public class ViewKeyboardHex extends androidx.constraintlayout.widget.Constraint
             @SuppressLint("CustomViewStyleable") TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.KeyBoard);
             theme = a.getInt(R.styleable.KeyBoard_KB_Theme, 0);
             textColor = a.getColor(R.styleable.KeyBoard_KB_textColor, 0);
-            setKeyboardTextSize(a.getDimension(R.styleable.KeyBoard_KB_textSize, getResources().getDimension(R.dimen.text_size_24)));
+            setKeyboardTextSize(a.getDimension(R.styleable.KeyBoard_KB_textSize, getResources().getDimension(R.dimen.pld_px_24)));
             setKeyboardAllCap(a.getBoolean(R.styleable.KeyBoard_KB_AllCap, false));
             a.recycle();
         }

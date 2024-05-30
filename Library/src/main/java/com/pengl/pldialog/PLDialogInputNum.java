@@ -221,11 +221,11 @@ public class PLDialogInputNum extends Dialog {
     public void show() {
         if (showType == TYPE.IDCARD) {
             setMaxLength(18);
-            tvNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.text_size_20));
+            tvNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.pld_px_30));
             mViewKeyboard.setKeyboardBLText("X");
         } else if (showType == TYPE.PHONE) {
             setMaxLength(11);
-            tvNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.text_size_40));
+            tvNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.pld_px_40));
         }
         super.show();
     }

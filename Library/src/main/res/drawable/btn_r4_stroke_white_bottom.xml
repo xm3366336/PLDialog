@@ -3,24 +3,16 @@
 
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="4dip" android:bottomRightRadius="4dip" android:topLeftRadius="0dip" android:topRightRadius="0dip"/>
-            <stroke
-                android:width="@dimen/line_height"
-                android:color="@color/colorPress"
-                android:dashWidth="0dp"
-                android:dashGap="0dp"/>
-            <solid android:color="@color/colorGray_30"/>
+            <corners android:bottomLeftRadius="@dimen/pld_px_4" android:bottomRightRadius="@dimen/pld_px_4" />
+            <stroke android:width="@dimen/pld_px_0_5" android:color="@color/colorPress" />
+            <solid android:color="@color/colorGray_30" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="4dip" android:bottomRightRadius="4dip" android:topLeftRadius="0dip" android:topRightRadius="0dip"/>
-            <stroke
-                android:width="@dimen/line_height"
-                android:color="@color/colorGray_30"
-                android:dashWidth="0dp"
-                android:dashGap="0dp"/>
-            <solid android:color="@android:color/white"/>
+            <corners android:bottomLeftRadius="@dimen/pld_px_4" android:bottomRightRadius="@dimen/pld_px_4" />
+            <stroke android:width="@dimen/pld_px_0_5" android:color="@color/colorGray_30" />
+            <solid android:color="@android:color/white" />
         </shape>
     </item>
 

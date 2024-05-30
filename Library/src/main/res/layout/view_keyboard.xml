@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <Button
         android:id="@+id/keyboard_btn_2"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_3"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_1"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_1"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <Button
         android:id="@+id/keyboard_btn_3"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_2"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_1"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <Button
         android:id="@+id/keyboard_btn_4"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_5"
         app:layout_constraintStart_toStartOf="@+id/keyboard_btn_1"
         app:layout_constraintTop_toBottomOf="@id/keyboard_btn_1"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <Button
         android:id="@+id/keyboard_btn_5"
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_6"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_4"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_4"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <Button
         android:id="@+id/keyboard_btn_6"
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="@id/keyboard_btn_3"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_5"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_4"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <Button
         android:id="@+id/keyboard_btn_7"
@@ -94,7 +94,7 @@
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_8"
         app:layout_constraintStart_toStartOf="@id/keyboard_btn_1"
         app:layout_constraintTop_toBottomOf="@id/keyboard_btn_4"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <Button
         android:id="@+id/keyboard_btn_8"
@@ -107,7 +107,7 @@
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_9"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_7"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_7"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <Button
         android:id="@+id/keyboard_btn_9"
@@ -120,7 +120,7 @@
         app:layout_constraintEnd_toEndOf="@id/keyboard_btn_3"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_8"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_7"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <Button
         android:id="@+id/keyboard_btn_bottom_left"
@@ -134,7 +134,7 @@
         app:layout_constraintStart_toStartOf="@+id/keyboard_btn_1"
         app:layout_constraintTop_toBottomOf="@id/keyboard_btn_7"
         tools:text="x"
-        tools:textSize="@dimen/text_size_24"
+        tools:textSize="@dimen/pld_px_24"
         tools:visibility="visible" />
 
     <Button
@@ -148,7 +148,7 @@
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_bottom_right"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_bottom_left"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_bottom_left"
-        tools:textSize="@dimen/text_size_24" />
+        tools:textSize="@dimen/pld_px_24" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/keyboard_btn_bottom_right"

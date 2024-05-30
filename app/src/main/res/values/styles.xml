@@ -6,7 +6,7 @@
         <item name="android:layout_marginTop">16dip</item>
         <item name="android:background">@drawable/list_selector_white</item>
         <item name="android:textColor">@color/text_666_to_999</item>
-        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textSize">16dip</item>
     </style>
 
 </resources>

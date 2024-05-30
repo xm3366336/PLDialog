@@ -3,25 +3,21 @@
 
     <item android:state_focused="true">
         <shape>
-            <solid android:color="@color/colorPressTrans"/>
-            <corners android:radius="4dip"/>
+            <solid android:color="@color/colorPressTrans" />
+            <corners android:radius="@dimen/pld_px_4" />
         </shape>
     </item>
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="@color/colorPressTrans"/>
-            <corners android:radius="4dip"/>
+            <solid android:color="@color/colorPressTrans" />
+            <corners android:radius="@dimen/pld_px_4" />
         </shape>
     </item>
     <item>
         <shape>
-            <solid android:color="#ffffff"/>
-            <corners android:radius="4dip"/>
-            <stroke
-                android:width="@dimen/line_height"
-                android:color="@color/colorGray_30"
-                android:dashWidth="0dp"
-                android:dashGap="0dp"/>
+            <solid android:color="#ffffff" />
+            <corners android:radius="@dimen/pld_px_4" />
+            <stroke android:width="@dimen/pld_px_0_5" android:color="@color/colorGray_30" />
         </shape>
     </item>
 

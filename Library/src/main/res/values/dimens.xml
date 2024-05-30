@@ -1,41 +1,32 @@
 <resources>
 
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-
     <!-- 分割线的高度 -->
-    <dimen name="line_height">0.5dip</dimen>
-    <dimen name="line_height_2">1dip</dimen>
+    <dimen name="pld_px_0_5">0.5dp</dimen>
+    <dimen name="pld_px_1">1dp</dimen>
+    <dimen name="pld_px_1_5">1.5dp</dimen>
+    <dimen name="pld_px_2">2dp</dimen>
+    <dimen name="pld_px_4">4dp</dimen>
+    <dimen name="pld_px_6">6dp</dimen>
+    <dimen name="pld_px_8">8dp</dimen>
+    <dimen name="pld_px_10">10dp</dimen>
+    <dimen name="pld_px_12">12dp</dimen>
+    <dimen name="pld_px_13">13dp</dimen>
+    <dimen name="pld_px_14">14dp</dimen>
+    <dimen name="pld_px_16">16dp</dimen>
+    <dimen name="pld_px_18">18dp</dimen>
+    <dimen name="pld_px_20">20dp</dimen>
+    <dimen name="pld_px_24">24dp</dimen>
+    <dimen name="pld_px_30">30dp</dimen>
+    <dimen name="pld_px_32">32dp</dimen>
+    <dimen name="pld_px_40">40dp</dimen>
+    <dimen name="pld_px_44">44dp</dimen>
+    <dimen name="pld_px_48">48dp</dimen>
+    <dimen name="pld_px_56">56dp</dimen>
+    <dimen name="pld_px_64">64dp</dimen>
+    <dimen name="pld_px_72">72dp</dimen>
+    <dimen name="pld_px_96">96dp</dimen>
 
-    <dimen name="button_inset_horizontal_material">4dip</dimen>
-    <dimen name="button_inset_vertical_material">6dp</dimen>
-    <dimen name="button_padding_horizontal_material">8dp</dimen>
-    <dimen name="button_padding_vertical_material">4dip</dimen>
-
-    <dimen name="text_size_8">8dp</dimen>
-    <dimen name="text_size_9">9dp</dimen>
-    <dimen name="text_size_10">10dp</dimen>
-    <dimen name="text_size_11">11dp</dimen>
-    <dimen name="text_size_12">12dp</dimen>
-    <dimen name="text_size_13">13dp</dimen>
-    <dimen name="text_size_14">14dp</dimen>
-    <dimen name="text_size_15">15dp</dimen>
-    <dimen name="text_size_16">16dp</dimen>
-    <dimen name="text_size_17">17dp</dimen>
-    <dimen name="text_size_18">18dp</dimen>
-    <dimen name="text_size_19">19dp</dimen>
-    <dimen name="text_size_20">20dp</dimen>
-    <dimen name="text_size_21">21dp</dimen>
-    <dimen name="text_size_24">24dp</dimen>
-    <dimen name="text_size_25">25dp</dimen>
-    <dimen name="text_size_28">28dp</dimen>
-    <dimen name="text_size_30">30dp</dimen>
-    <dimen name="text_size_32">32dp</dimen>
-    <dimen name="text_size_35">35dp</dimen>
-    <dimen name="text_size_37">37dp</dimen>
-    <dimen name="text_size_40">40dp</dimen>
-    <dimen name="text_size_45">45dp</dimen>
-    <dimen name="text_size_46">46dp</dimen>
-    <dimen name="text_size_55">55dp</dimen>
-
+    <dimen name="pld_px_120">120dp</dimen>
+    <dimen name="pld_px_240">240dp</dimen>
+    <dimen name="pld_px_320">320dp</dimen>
 </resources>

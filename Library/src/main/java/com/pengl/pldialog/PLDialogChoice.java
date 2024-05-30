@@ -76,7 +76,7 @@ public class PLDialogChoice extends BottomSheetDialog {
     }
 
     public PLDialogChoice setItems(String[] items) {
-        if (null == items || items.length <= 0) {
+        if (null == items || items.length == 0) {
             return this;
         }
 

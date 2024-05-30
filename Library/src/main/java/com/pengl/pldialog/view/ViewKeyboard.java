@@ -51,7 +51,7 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
             @SuppressLint("CustomViewStyleable") TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.KeyBoard);
             theme = a.getInt(R.styleable.KeyBoard_KB_Theme, 0);
             textColor = a.getColor(R.styleable.KeyBoard_KB_textColor, 0);
-            setKeyboardTextSize(a.getDimension(R.styleable.KeyBoard_KB_textSize, getResources().getDimension(R.dimen.text_size_24)));
+            setKeyboardTextSize(a.getDimension(R.styleable.KeyBoard_KB_textSize, getResources().getDimension(R.dimen.pld_px_24)));
             setKeyboardBLShow(a.getBoolean(R.styleable.KeyBoard_KB_BtnBottomLeft_show, false));
             setKeyboardBLText(a.getString(R.styleable.KeyBoard_KB_BtnBottomLeft_text));
             setKeyboardBRImageResource(a.getResourceId(R.styleable.KeyBoard_KB_BtnBottomRight_img, //

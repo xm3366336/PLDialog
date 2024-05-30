@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:gravity="center_horizontal"
-    android:padding="8dip"
+    android:padding="@dimen/pld_px_8"
     android:shrinkColumns="*">
 
     <TableRow>
@@ -29,7 +27,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/keyboard_btn_a"
             style="@style/PLKeyboardBtn"
-            android:layout_marginStart="16dip"
+            android:layout_marginStart="@dimen/pld_px_16"
             android:text="a" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -38,7 +36,7 @@
             android:text="d" />
     </TableRow>
 
-    <TableRow android:layout_marginTop="4dip">
+    <TableRow android:layout_marginTop="@dimen/pld_px_4">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/keyboard_btn_4"
@@ -58,7 +56,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/keyboard_btn_b"
             style="@style/PLKeyboardBtn"
-            android:layout_marginStart="16dip"
+            android:layout_marginStart="@dimen/pld_px_16"
             android:text="b" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -67,7 +65,7 @@
             android:text="e" />
     </TableRow>
 
-    <TableRow android:layout_marginTop="4dip">
+    <TableRow android:layout_marginTop="@dimen/pld_px_4">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/keyboard_btn_7"
@@ -87,7 +85,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/keyboard_btn_c"
             style="@style/PLKeyboardBtn"
-            android:layout_marginStart="16dip"
+            android:layout_marginStart="@dimen/pld_px_16"
             android:text="c" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -97,15 +95,15 @@
     </TableRow>
 
     <TableRow
-        android:layout_marginTop="4dip"
-        android:layout_marginBottom="4dip"
+        android:layout_marginTop="@dimen/pld_px_4"
+        android:layout_marginBottom="@dimen/pld_px_4"
         android:gravity="center_vertical">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/keyboard_btn_clean"
             style="@style/PLKeyboardBtn"
             android:text="清空"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/pld_px_16" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/keyboard_btn_0"
@@ -116,10 +114,10 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/keyboard_btn_ok"
             style="@style/PLKeyboardBtn"
-            android:layout_marginStart="16dip"
+            android:layout_marginStart="@dimen/pld_px_16"
             android:layout_span="2"
             android:text="确定"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/pld_px_16" />
 
     </TableRow>
 

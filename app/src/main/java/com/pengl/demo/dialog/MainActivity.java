@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
     public void OnClickInputNum(View v) {
         PLDialogInputNum dialog = new PLDialogInputNum(this);
         dialog.setMaxLength(6);
+        dialog.setBgRounded(24);
         dialog.setCallback(params -> {
             String input = (String) params[0];
             Toast.makeText(MainActivity.this, input, Toast.LENGTH_SHORT).show();
@@ -210,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickToast1(View v) {
-        PLToast.showErr(this, "出错啦~");
+        PLToast.showErr(this, "出错啦～");
     }
 
     public void OnClickToast2(View v) {

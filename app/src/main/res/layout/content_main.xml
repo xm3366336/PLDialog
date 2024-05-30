@@ -199,7 +199,7 @@
             android:paddingTop="32dip"
             android:paddingBottom="32dip"
             android:textColor="@color/text_666"
-            android:textSize="@dimen/text_size_12"
+            android:textSize="12dip"
             tools:text="@string/version" />
     </LinearLayout>
 
