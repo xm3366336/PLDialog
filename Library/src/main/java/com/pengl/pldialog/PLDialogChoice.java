@@ -123,6 +123,7 @@ public class PLDialogChoice extends BottomSheetDialog {
         btn.setAllCaps(false);
         btn.setTextColor(getContext().getResources().getColor(R.color.text_666_to_999));
         btn.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.pld_px_16));
+        btn.setMinHeight(getContext().getResources().getDimensionPixelSize(R.dimen.pld_px_44));
 
         if (style == 0) {
             btn.setBackgroundResource(R.drawable.btn_r4_stroke_white);

@@ -23,8 +23,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ic_tips_succ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/pld_px_96"
+            android:layout_height="@dimen/pld_px_96"
             android:layout_marginTop="@dimen/pld_px_48"
             android:src="@mipmap/pld_tips_succ"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,9 +78,10 @@
         android:layout_width="@dimen/pld_px_64"
         android:layout_height="@dimen/pld_px_64"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/pld_px_16"
+        android:layout_marginTop="@dimen/pld_px_8"
         android:background="@drawable/list_selector_r64_trans"
-        android:scaleType="center"
+        android:padding="@dimen/pld_px_16"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_baseline_close_24"
         android:tint="@color/text_aaa"
         tools:ignore="ContentDescription" />
