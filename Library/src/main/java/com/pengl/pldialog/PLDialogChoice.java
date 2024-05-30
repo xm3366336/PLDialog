@@ -41,7 +41,8 @@ public class PLDialogChoice extends BottomSheetDialog {
         this.tv_title = findViewById(R.id.tv_title);
         this.tv_content = findViewById(R.id.tv_content);
         this.layout_btns = findViewById(R.id.layout_btns);
-        this.margins = (int) -TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0.5f, context.getResources().getDisplayMetrics());
+        this.margins = -context.getResources().getDimensionPixelSize(R.dimen.pld_px_0_5);
+        setBgRoundedDip(8);
     }
 
     @Override
@@ -121,7 +122,7 @@ public class PLDialogChoice extends BottomSheetDialog {
         btn.setText(str);
         btn.setAllCaps(false);
         btn.setTextColor(getContext().getResources().getColor(R.color.text_666_to_999));
-        btn.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        btn.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.pld_px_16));
 
         if (style == 0) {
             btn.setBackgroundResource(R.drawable.btn_r4_stroke_white);
@@ -147,14 +148,19 @@ public class PLDialogChoice extends BottomSheetDialog {
     /**
      * 设置圆角的大小
      *
-     * @param cornerSizeDip 默认是4dip，单位dip
+     * @param cornerSizePx 单位px
      */
-    public PLDialogChoice setBgRounded(int cornerSizeDip) {
+    public PLDialogChoice setBgRounded(float cornerSizePx) {
         bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
-                .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
-                .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizePx, 0))
+                .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizePx, 0))
                 .build());
         return this;
+    }
+
+    public PLDialogChoice setBgRoundedDip(int cornerSizeDip) {
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerSizeDip, getContext().getResources().getDisplayMetrics());
+        return setBgRounded(px);
     }
 
     public ShapeableImageView getBg() {

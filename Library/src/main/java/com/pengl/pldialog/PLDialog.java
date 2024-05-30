@@ -2,6 +2,7 @@ package com.pengl.pldialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
@@ -58,6 +59,7 @@ public class PLDialog extends Dialog {
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_other = findViewById(R.id.btn_other);
 
+        setBgRoundedDip(8);
         btn_confirm.setOnClickListener(view -> {
             if (null != OnClickOK) {
                 OnClickOK.onClick(null);
@@ -105,12 +107,17 @@ public class PLDialog extends Dialog {
     /**
      * 设置圆角的大小
      *
-     * @param cornerSizeDip 默认是4dip，单位dip
+     * @param cornerSizePx 单位px
      */
-    public PLDialog setBgRounded(int cornerSizeDip) {
+    public PLDialog setBgRounded(float cornerSizePx) {
         bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
-                .setAllCorners(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0)).build());
+                .setAllCorners(CornerFamily.ROUNDED, Math.max(cornerSizePx, 0)).build());
         return this;
+    }
+
+    public PLDialog setBgRoundedDip(int cornerSizeDip) {
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerSizeDip, getContext().getResources().getDisplayMetrics());
+        return setBgRounded(px);
     }
 
     public ShapeableImageView getBg() {

@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.Selection;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -64,6 +65,7 @@ public class PLDialogInput extends Dialog {
         btn_cancel = findViewById(R.id.btn_cancel);
         this.isMustInput = true;
         this.isShowKeyboard = true;
+        setBgRoundedDip(8);
     }
 
     public PLDialogInput setTitle(String title) {
@@ -154,19 +156,24 @@ public class PLDialogInput extends Dialog {
     /**
      * 设置圆角的大小
      *
-     * @param cornerSizeDip 默认是4dip，单位dip
+     * @param cornerSizePx 单位px
      */
-    public PLDialogInput setBgRounded(int cornerSizeDip) {
+    public PLDialogInput setBgRounded(float cornerSizePx) {
         if (showType == 2) {
             bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
-                    .setAllCorners(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0)).build());
+                    .setAllCorners(CornerFamily.ROUNDED, Math.max(cornerSizePx, 0)).build());
         } else {
             bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
-                    .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
-                    .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                    .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizePx, 0))
+                    .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizePx, 0))
                     .build());
         }
         return this;
+    }
+
+    public PLDialogInput setBgRoundedDip(int cornerSizeDip) {
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerSizeDip, getContext().getResources().getDisplayMetrics());
+        return setBgRounded(px);
     }
 
     @Override

@@ -49,19 +49,20 @@ public class PLDialogPhotoPreview extends Dialog {
         setContentView(R.layout.pl_dialog_photo_preview);
 
         Window window = getWindow();
-        View decorView = window.getDecorView();
-        // 设置window背景，默认的背景会有Padding值，不能全屏。当然不一定要是透明，你可以设置其他背景，替换默认的背景即可。
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        // 两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
-        int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-        decorView.setSystemUiVisibility(option);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.TRANSPARENT);
-        // 设置导航栏颜色
-        window.setNavigationBarColor(Color.TRANSPARENT);
-        // 内容扩展到导航栏
-        window.setType(WindowManager.LayoutParams.TYPE_APPLICATION_PANEL);
+        if (null != window) {
+            View decorView = window.getDecorView();
+            // 设置window背景，默认的背景会有Padding值，不能全屏。当然不一定要是透明，你可以设置其他背景，替换默认的背景即可。
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            // 两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+            // 设置导航栏颜色
+            window.setNavigationBarColor(Color.TRANSPARENT);
+            // 内容扩展到导航栏
+            window.setType(WindowManager.LayoutParams.TYPE_APPLICATION_PANEL);
+        }
 
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.width = ViewGroup.LayoutParams.MATCH_PARENT;

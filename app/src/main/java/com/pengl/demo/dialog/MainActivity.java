@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void OnClickDialog1(View v) {
         PLDialog dialog = new PLDialog(this, "这是标题", "这里是内容这里是内容这里是内容这里是内容");
-        dialog.setBgRounded(8);
+        dialog.setBgRoundedDip(8);
         dialog.setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show());
         dialog.show();
     }
@@ -110,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         PLDialog dialog = new PLDialog(this, 2);
         dialog.setContent("这里是内容这里是内容这里是内容这里是内容");
         dialog.getTvTitle().setVisibility(View.GONE);
-        dialog.setBgRounded(8);
         dialog.setOnClickOK(v1 -> Toast.makeText(MainActivity.this, "点击了确定", Toast.LENGTH_SHORT).show());
         dialog.show();
     }
@@ -121,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.setTitleSub("为确保信息安全，请输入你的姓名，不超过5个字");
         dialog.setInputHint("最长5个字");
         dialog.setOriginContent("张三");
-        dialog.setBgRounded(24);
         dialog.setCallback(params -> {
             String input = (String) params[0];
             Toast.makeText(MainActivity.this, input, Toast.LENGTH_SHORT).show();
@@ -137,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.setOriginContent("张三");
         dialog.getEditText().setBackgroundResource(R.drawable.bg_edit_default);
         dialog.setShowKeyboard(false);
-        dialog.setBgRounded(24);
         dialog.setCallback(params -> {
             String input = (String) params[0];
             Toast.makeText(MainActivity.this, input, Toast.LENGTH_SHORT).show();
@@ -148,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
     public void OnClickInputNum(View v) {
         PLDialogInputNum dialog = new PLDialogInputNum(this);
         dialog.setMaxLength(6);
-        dialog.setBgRounded(24);
         dialog.setCallback(params -> {
             String input = (String) params[0];
             Toast.makeText(MainActivity.this, input, Toast.LENGTH_SHORT).show();
@@ -158,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void OnClickInputIdCard(View v) {
         PLDialogInputNum dialog = new PLDialogInputNum(this);
-        dialog.setBgRounded(24);
         dialog.setShowType(PLDialogInputNum.TYPE.IDCARD);
         dialog.setCallback(params -> {
             String input = (String) params[0];
@@ -169,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void OnClickInputHex16(View v) {
         PLDialogInputNum dialog = new PLDialogInputNum(this, PLDialogInputNum.TYPE.HEX16);
-        dialog.setBgRounded(24);
         dialog.setCallback(params -> {
             String input = (String) params[0];
             Toast.makeText(MainActivity.this, input, Toast.LENGTH_SHORT).show();
@@ -190,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
         String[] items = new String[]{"发给微信好友", "分享到朋友圈", "保存至本地"};
         PLDialogChoice dialog = new PLDialogChoice(this);
         dialog.setTitle("标题").setContent("这是内容，这是内容，这是内容，这是内容！");
-        dialog.setBgRounded(24);
         dialog.setItems(items);
         dialog.setOnClickListener((dialog1, which) -> {
             if (which == -1) {

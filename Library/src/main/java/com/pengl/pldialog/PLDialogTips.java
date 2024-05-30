@@ -3,6 +3,7 @@ package com.pengl.pldialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.text.Spanned;
+import android.util.TypedValue;
 import android.view.View;
 
 import androidx.appcompat.widget.AppCompatTextView;
@@ -63,6 +64,8 @@ public class PLDialogTips extends Dialog {
             }
             dismiss();
         });
+
+        setBgRoundedDip(8);
     }
 
     public AppCompatTextView getTitleView() {
@@ -110,12 +113,17 @@ public class PLDialogTips extends Dialog {
     /**
      * 设置圆角的大小
      *
-     * @param cornerSizeDip 默认是4dip，单位dip
+     * @param cornerSizePx 单位px
      */
-    public PLDialogTips setBgRounded(int cornerSizeDip) {
+    public PLDialogTips setBgRounded(float cornerSizePx) {
         bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
-                .setAllCorners(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0)).build());
+                .setAllCorners(CornerFamily.ROUNDED, Math.max(cornerSizePx, 0)).build());
         return this;
+    }
+
+    public PLDialogTips setBgRoundedDip(int cornerSizeDip) {
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerSizeDip, getContext().getResources().getDisplayMetrics());
+        return setBgRounded(px);
     }
 
     public ShapeableImageView getBg() {

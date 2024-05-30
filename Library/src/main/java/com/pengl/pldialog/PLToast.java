@@ -93,13 +93,12 @@ public class PLToast {
             return;
         }
 
-        int dip8 = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8,
-                ctx.getResources().getDisplayMetrics());
+        int px8 = ctx.getResources().getDimensionPixelOffset(R.dimen.pld_px_8);
         TextView tv = new TextView(ctx);
         tv.setBackgroundResource(R.drawable.bg_r8_black_t99);
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, ctx.getResources().getDimension(R.dimen.pld_px_14));
         tv.setTextColor(ctx.getResources().getColor(R.color.colorWhite));
-        tv.setPadding(3 * dip8, dip8, 3 * dip8, dip8);
+        tv.setPadding(3 * px8, px8, 3 * px8, px8);
         tv.setText(message);
         tv.setGravity(Gravity.CENTER);
 

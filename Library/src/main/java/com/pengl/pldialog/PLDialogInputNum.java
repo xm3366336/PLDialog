@@ -58,6 +58,7 @@ public class PLDialogInputNum extends Dialog {
             mViewKeyboard = findViewById(R.id.mViewKeyboard);
         }
         this.showType = showType;
+        setBgRoundedDip(8);
     }
 
     /**
@@ -109,14 +110,19 @@ public class PLDialogInputNum extends Dialog {
     /**
      * 设置圆角的大小
      *
-     * @param cornerSizeDip 默认是4dip，单位dip
+     * @param cornerSizePx 单位px
      */
-    public PLDialogInputNum setBgRounded(int cornerSizeDip) {
+    public PLDialogInputNum setBgRounded(float cornerSizePx) {
         bg.setShapeAppearanceModel(ShapeAppearanceModel.builder()
-                .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
-                .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizeDip, 0))
+                .setTopLeftCorner(CornerFamily.ROUNDED, Math.max(cornerSizePx, 0))
+                .setTopRightCorner(CornerFamily.ROUNDED, Math.max(cornerSizePx, 0))
                 .build());
         return this;
+    }
+
+    public PLDialogInputNum setBgRoundedDip(int cornerSizeDip) {
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, cornerSizeDip, getContext().getResources().getDisplayMetrics());
+        return setBgRounded(px);
     }
 
     public ShapeableImageView getBg() {

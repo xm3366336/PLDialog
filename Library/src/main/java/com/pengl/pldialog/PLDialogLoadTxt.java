@@ -9,6 +9,8 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 public class PLDialogLoadTxt extends Dialog {
 
     private static PLDialogLoadTxt loadDialog;
@@ -28,17 +30,19 @@ public class PLDialogLoadTxt extends Dialog {
         setContentView(R.layout.pl_dialog_loading_txt);
 
         Window window = getWindow();
-        WindowManager.LayoutParams attributesParams = window.getAttributes();
-        attributesParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        attributesParams.dimAmount = 0.5f;
-        window.setAttributes(attributesParams);
+        if (null != window) {
+            WindowManager.LayoutParams attributesParams = window.getAttributes();
+            attributesParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+            attributesParams.dimAmount = 0.5f;
+            window.setAttributes(attributesParams);
+            window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        }
 
-        window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         ((TextView) findViewById(R.id.tv_msg)).setText(tvMsg);
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (canNotCancel) {
                 return true;
@@ -100,7 +104,6 @@ public class PLDialogLoadTxt extends Dialog {
                 loadDialog = null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             loadDialog = null;
         }
     }

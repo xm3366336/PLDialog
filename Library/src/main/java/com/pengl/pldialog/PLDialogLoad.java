@@ -29,12 +29,13 @@ public class PLDialogLoad extends Dialog {
         setContentView(R.layout.pl_dialog_loading);
 
         Window window = getWindow();
-        WindowManager.LayoutParams attributesParams = window.getAttributes();
-        attributesParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        attributesParams.dimAmount = 0.5f;
-        window.setAttributes(attributesParams);
-
-        window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        if (null != window) {
+            WindowManager.LayoutParams attributesParams = window.getAttributes();
+            attributesParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+            attributesParams.dimAmount = 0.5f;
+            window.setAttributes(attributesParams);
+            window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        }
     }
 
     @Override
@@ -100,7 +101,6 @@ public class PLDialogLoad extends Dialog {
                 loadDialog = null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             loadDialog = null;
         }
     }
