@@ -161,8 +161,8 @@
                 android:layout_marginTop="0dip"
                 android:layout_marginEnd="8dip"
                 android:layout_weight="1"
-                android:onClick="OnClickInputNum"
-                android:text="输入数字" />
+                android:onClick="OnClickInputNum1"
+                android:text="输入数字1" />
 
             <Button
                 style="@style/item_main_btn_style"
@@ -182,10 +182,28 @@
                 android:text="输入16进制" />
         </LinearLayout>
 
-        <Button
-            style="@style/item_main_btn_style"
-            android:onClick="OnClickChoose"
-            android:text="选择一项" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dip"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginTop="0dip"
+                android:layout_marginEnd="8dip"
+                android:layout_weight="2"
+                android:onClick="OnClickInputNum2"
+                android:text="输入数字2" />
+
+            <Button
+                style="@style/item_main_btn_style"
+                android:layout_marginStart="8dip"
+                android:layout_marginTop="0dip"
+                android:layout_weight="1"
+                android:onClick="OnClickChoose"
+                android:text="选择一项" />
+        </LinearLayout>
 
         <Button
             style="@style/item_main_btn_style"

@@ -10,8 +10,8 @@
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progress"
         style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/pld_px_44"
+        android:layout_height="@dimen/pld_px_44"
         android:layout_gravity="center_horizontal" />
 
     <TextView

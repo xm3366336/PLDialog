@@ -19,6 +19,8 @@
         <attr name="KB_BtnBottomRight_img" format="reference" />
         <!-- 字母是否使用大写值 -->
         <attr name="KB_AllCap" format="boolean" />
+        <!-- 按钮的背景 -->
+        <attr name="KB_BtnBg" format="reference" />
     </declare-styleable>
 
 </resources>

@@ -10,12 +10,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="1"
         app:layout_constraintBottom_toTopOf="@id/keyboard_btn_4"
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <Button
@@ -23,12 +23,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="2"
         app:layout_constraintBottom_toBottomOf="@id/keyboard_btn_1"
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_3"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_1"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_1"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <Button
@@ -36,12 +36,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="3"
         app:layout_constraintBottom_toBottomOf="@id/keyboard_btn_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_2"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_1"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <Button
@@ -49,12 +49,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="4"
         app:layout_constraintBottom_toTopOf="@id/keyboard_btn_7"
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_5"
         app:layout_constraintStart_toStartOf="@+id/keyboard_btn_1"
         app:layout_constraintTop_toBottomOf="@id/keyboard_btn_1"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <Button
@@ -62,12 +62,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="5"
         app:layout_constraintBottom_toBottomOf="@id/keyboard_btn_4"
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_6"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_4"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_4"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <Button
@@ -75,12 +75,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="6"
         app:layout_constraintBottom_toBottomOf="@id/keyboard_btn_4"
         app:layout_constraintEnd_toEndOf="@id/keyboard_btn_3"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_5"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_4"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <Button
@@ -88,12 +88,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="7"
         app:layout_constraintBottom_toTopOf="@id/keyboard_btn_bottom_left"
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_8"
         app:layout_constraintStart_toStartOf="@id/keyboard_btn_1"
         app:layout_constraintTop_toBottomOf="@id/keyboard_btn_4"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <Button
@@ -101,12 +101,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="8"
         app:layout_constraintBottom_toBottomOf="@id/keyboard_btn_7"
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_9"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_7"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_7"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <Button
@@ -114,12 +114,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="9"
         app:layout_constraintBottom_toBottomOf="@id/keyboard_btn_7"
         app:layout_constraintEnd_toEndOf="@id/keyboard_btn_3"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_8"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_7"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <Button
@@ -127,13 +127,13 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_0"
         app:layout_constraintStart_toStartOf="@+id/keyboard_btn_1"
         app:layout_constraintTop_toBottomOf="@id/keyboard_btn_7"
-        tools:text="x"
+        tools:background="@drawable/list_selector"
+        tools:text="C"
         tools:textSize="@dimen/pld_px_24"
         tools:visibility="visible" />
 
@@ -142,12 +142,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         android:text="0"
         app:layout_constraintBottom_toBottomOf="@id/keyboard_btn_bottom_left"
         app:layout_constraintEnd_toStartOf="@id/keyboard_btn_bottom_right"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_bottom_left"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_bottom_left"
+        tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -155,10 +155,10 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
-        android:background="@drawable/list_selector"
         app:layout_constraintBottom_toBottomOf="@id/keyboard_btn_bottom_left"
         app:layout_constraintEnd_toEndOf="@id/keyboard_btn_3"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_0"
-        app:layout_constraintTop_toTopOf="@id/keyboard_btn_bottom_left" />
+        app:layout_constraintTop_toTopOf="@id/keyboard_btn_bottom_left"
+        tools:background="@drawable/list_selector" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

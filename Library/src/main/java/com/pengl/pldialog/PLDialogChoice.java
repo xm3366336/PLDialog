@@ -24,8 +24,6 @@ import java.util.Objects;
  */
 public class PLDialogChoice extends BottomSheetDialog {
 
-    private final int margins;
-
     private final AppCompatButton btn_cancel;
     private final AppCompatTextView tv_title, tv_content;
     private final LinearLayout layout_btns;
@@ -41,7 +39,6 @@ public class PLDialogChoice extends BottomSheetDialog {
         this.tv_title = findViewById(R.id.tv_title);
         this.tv_content = findViewById(R.id.tv_content);
         this.layout_btns = findViewById(R.id.layout_btns);
-        this.margins = -context.getResources().getDimensionPixelSize(R.dimen.pld_px_0_5);
         setBgRoundedDip(8);
     }
 
@@ -131,10 +128,8 @@ public class PLDialogChoice extends BottomSheetDialog {
             btn.setBackgroundResource(R.drawable.btn_r4_stroke_white_top);
         } else if (style == 2) {
             btn.setBackgroundResource(R.drawable.btn_r4_stroke_white_middle);
-            params.setMargins(0, margins, 0, 0);
         } else if (style == 3) {
             btn.setBackgroundResource(R.drawable.btn_r4_stroke_white_bottom);
-            params.setMargins(0, margins, 0, 0);
         }
         btn.setLayoutParams(params);
         btn.setOnClickListener(view -> {

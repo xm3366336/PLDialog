@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/bg"
+        android:layout_width="0dip"
+        android:layout_height="0dip"
+        android:background="@drawable/bg_r8_black_t99"
+        app:layout_constraintBottom_toBottomOf="@id/mViewKeyboard"
+        app:layout_constraintEnd_toEndOf="@id/mViewKeyboard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.pengl.pldialog.view.ViewKeyboard
+        android:id="@+id/mViewKeyboard"
+        android:layout_width="@dimen/pld_px_240"
+        android:layout_height="@dimen/pld_px_240"
+        app:KB_BtnBg="@drawable/list_selector_r8_trans"
+        app:KB_BtnBottomLeft_show="true"
+        app:KB_BtnBottomLeft_text="C"
+        app:KB_BtnBottomRight_img="@mipmap/pld_keyboard_done_dark"
+        app:KB_Theme="light"
+        app:KB_textSize="@dimen/pld_px_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

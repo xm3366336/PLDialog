@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.pengl.pldialog.PLDialogLoadTxt;
 import com.pengl.pldialog.PLDialogPhotoPreview;
 import com.pengl.pldialog.PLDialogTips;
 import com.pengl.pldialog.PLDialogTipsSucc;
+import com.pengl.pldialog.PLPopupInputNum;
 import com.pengl.pldialog.PLToast;
 import com.pengl.pldialog.vehicle.VehicleKeyboardHelper;
 
@@ -142,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void OnClickInputNum(View v) {
+    public void OnClickInputNum1(View v) {
         PLDialogInputNum dialog = new PLDialogInputNum(this);
         dialog.setMaxLength(6);
         dialog.setCallback(params -> {
@@ -150,6 +152,20 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, input, Toast.LENGTH_SHORT).show();
         });
         dialog.show();
+    }
+
+    public void OnClickInputNum2(View v) {
+        PLPopupInputNum popup = new PLPopupInputNum(this, params -> {
+            int type = (int) params[0];
+            if (type == 0) {
+                ((Button) v).setText(((Button) v).getText() + (String) params[1]);
+            } else if (type == 1) {
+                ((Button) v).setText("");
+            } else if (type == 2) {
+                Toast.makeText(MainActivity.this, "done", Toast.LENGTH_SHORT).show();
+            }
+        });
+        popup.showPopupWindow(v);
     }
 
     public void OnClickInputIdCard(View v) {

@@ -48,7 +48,7 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
         int theme = 1;
         int textColor = 0;
         if (null != attrs) {
-            @SuppressLint("CustomViewStyleable") TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.KeyBoard);
+            @SuppressLint("CustomViewStyleable") TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.KeyBoard);
             theme = a.getInt(R.styleable.KeyBoard_KB_Theme, 0);
             textColor = a.getColor(R.styleable.KeyBoard_KB_textColor, 0);
             setKeyboardTextSize(a.getDimension(R.styleable.KeyBoard_KB_textSize, getResources().getDimension(R.dimen.pld_px_24)));
@@ -56,6 +56,7 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
             setKeyboardBLText(a.getString(R.styleable.KeyBoard_KB_BtnBottomLeft_text));
             setKeyboardBRImageResource(a.getResourceId(R.styleable.KeyBoard_KB_BtnBottomRight_img, //
                     theme == 1 ? R.mipmap.pld_keyboard_del_light : R.mipmap.pld_keyboard_del_dark));
+            setKeyboardBtnBg(a.getResourceId(R.styleable.KeyBoard_KB_BtnBg, R.drawable.list_selector)); //
             a.recycle();
         }
 
@@ -91,6 +92,19 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
         } else {
             setKeyboardTextColor(textColor);
         }
+    }
+
+    /**
+     * 设置按钮背景色
+     *
+     * @param resId 按钮的背景色
+     */
+    public void setKeyboardBtnBg(@DrawableRes int resId) {
+        for (int btnId : keyboard_btn) {
+            findViewById(btnId).setBackgroundResource(resId);
+        }
+        keyboard_btn_bottom_left.setBackgroundResource(resId);
+        keyboard_btn_bottom_right.setBackgroundResource(resId);
     }
 
     /**
@@ -147,6 +161,14 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
         } else {
             keyboard_btn_bottom_left.setText(text);
         }
+    }
+
+    public Button getBtnBottomLeft() {
+        return keyboard_btn_bottom_left;
+    }
+
+    public AppCompatImageButton getBtnBottomRight() {
+        return keyboard_btn_bottom_right;
     }
 
     private OnKeyboardClickListener onKeyboardListener;

@@ -8,10 +8,18 @@
         </shape>
     </item>
     <item>
-        <shape android:shape="rectangle">
-            <stroke android:width="@dimen/pld_px_0_5" android:color="@color/colorGray_30" />
-            <solid android:color="@android:color/white" />
-        </shape>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/colorGray_30" />
+                </shape>
+            </item>
+            <item android:bottom="@dimen/pld_px_0_5" android:left="@dimen/pld_px_0_5" android:right="@dimen/pld_px_0_5">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/colorWhite" />
+                </shape>
+            </item>
+        </layer-list>
     </item>
 
 </selector>
