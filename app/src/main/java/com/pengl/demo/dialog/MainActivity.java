@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -162,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onDone(PLPopupInputNum popup) {
+            public void onDone(PopupWindow popup) {
                 Toast.makeText(MainActivity.this, "done", Toast.LENGTH_SHORT).show();
                 popup.dismiss();
             }

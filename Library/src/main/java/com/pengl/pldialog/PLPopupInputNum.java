@@ -18,16 +18,20 @@ public class PLPopupInputNum extends PopupWindow {
 
         void onClean();
 
-        void onDone(PLPopupInputNum popup);
+        void onDone(PopupWindow popup);
     }
 
     public PLPopupInputNum(Context context, @NotNull final OnPopupInputNumListener onListener) {
+        this(context, true, onListener);
+    }
+
+    public PLPopupInputNum(Context context, boolean isFocusable, @NotNull final OnPopupInputNumListener onListener) {
         View v = View.inflate(context, R.layout.pl_popup_input_num, null);
 
         this.setContentView(v);
         this.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
         this.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
-        this.setFocusable(true);// 设置SelectPicPopupWindow弹出窗体可点击
+        this.setFocusable(isFocusable);// 设置SelectPicPopupWindow弹出窗体可点击
         this.setOutsideTouchable(true);// 点back键和view之外的地方可以使其消失
         this.update();// 刷新状态
         this.setBackgroundDrawable(null);
