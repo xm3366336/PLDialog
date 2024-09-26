@@ -155,17 +155,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickInputNum2(View v) {
-        PLPopupInputNum popup = new PLPopupInputNum(this, params -> {
-            int type = (int) params[0];
-            if (type == 0) {
-                ((Button) v).setText(((Button) v).getText() + (String) params[1]);
-            } else if (type == 1) {
+        new PLPopupInputNum(this, new PLPopupInputNum.OnPopupInputNumListener() {
+            @Override
+            public void onClean() {
                 ((Button) v).setText("");
-            } else if (type == 2) {
-                Toast.makeText(MainActivity.this, "done", Toast.LENGTH_SHORT).show();
             }
-        });
-        popup.showPopupWindow(v);
+
+            @Override
+            public void onDone(PLPopupInputNum popup) {
+                Toast.makeText(MainActivity.this, "done", Toast.LENGTH_SHORT).show();
+                popup.dismiss();
+            }
+
+            @Override
+            public void onInput(String num) {
+                ((Button) v).setText(((Button) v).getText() + num);
+            }
+        }).showPopupWindow(v);
     }
 
     public void OnClickInputIdCard(View v) {

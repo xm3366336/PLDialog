@@ -58,9 +58,6 @@ public class PLDialogInputNum extends Dialog {
             mViewKeyboard = findViewById(R.id.mViewKeyboard);
         }
         this.showType = showType;
-        if (showType == TYPE.IDCARD) {
-            mViewKeyboard.setKeyboardBLText("X");
-        }
         setBgRoundedDip(8);
     }
 
@@ -165,11 +162,22 @@ public class PLDialogInputNum extends Dialog {
 
                 @Override
                 public void onKeyDownBottomLeft(boolean isLong) {
+                    if (!isLong) {
+                        if (showType == TYPE.IDCARD) {
+                            if (tvNum.length() == 17) {
+                                tvNum.setText(tvNum.getText() + mViewKeyboard.getBtnBottomLeft().getText().toString());
+                            }
+                        } else {
+                            tvNum.setText("");
+                        }
+                    }
                 }
 
                 @Override
                 public void onKeyDownBottomRight(boolean isLong) {
-                    if (!isLong) btnOK();
+                    if (!isLong) {
+                        btnOK();
+                    }
                 }
             });
         }
@@ -223,11 +231,11 @@ public class PLDialogInputNum extends Dialog {
     public void show() {
         if (showType == TYPE.IDCARD) {
             setMaxLength(18);
-            tvNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.pld_px_30));
+            tvNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.pld_px_24));
             mViewKeyboard.setKeyboardBLText("X");
         } else if (showType == TYPE.PHONE) {
-            setMaxLength(11);
             tvNum.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.pld_px_40));
+            setMaxLength(11);
         }
         super.show();
     }

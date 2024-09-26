@@ -23,12 +23,12 @@
         android:layout_height="0dip"
         android:ellipsize="start"
         android:fontFamily="sans-serif-condensed-light"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|start"
         android:letterSpacing="0.1"
         android:lineSpacingExtra="@dimen/pld_px_20"
         android:paddingStart="@dimen/pld_px_16"
         android:paddingTop="@dimen/pld_px_64"
-        android:paddingEnd="@dimen/pld_px_48"
+        android:paddingEnd="@dimen/pld_px_72"
         android:paddingBottom="@dimen/pld_px_32"
         android:singleLine="true"
         android:textColor="@color/text_333"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="13A912342121" />
+        tools:text="13A91234212AB" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_del"

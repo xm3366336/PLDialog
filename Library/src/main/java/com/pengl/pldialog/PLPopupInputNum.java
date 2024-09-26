@@ -1,12 +1,10 @@
 package com.pengl.pldialog;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
-import com.pengl.pldialog.util.ICallBack;
 import com.pengl.pldialog.view.ViewKeyboard;
 
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +13,15 @@ public class PLPopupInputNum extends PopupWindow {
 
     private final ViewKeyboard mViewKeyboard;
 
-    public PLPopupInputNum(Context context, @NotNull final ICallBack callBack) {
+    public interface OnPopupInputNumListener {
+        void onInput(String num);
+
+        void onClean();
+
+        void onDone(PLPopupInputNum popup);
+    }
+
+    public PLPopupInputNum(Context context, @NotNull final OnPopupInputNumListener onListener) {
         View v = View.inflate(context, R.layout.pl_popup_input_num, null);
 
         this.setContentView(v);
@@ -31,20 +37,21 @@ public class PLPopupInputNum extends PopupWindow {
         mViewKeyboard.setOnKeyboardClickListener(new ViewKeyboard.OnKeyboardClickListener() {
             @Override
             public void onKeyDown(String num) {
-                if (TextUtils.equals(num, "C")) {
-                    callBack.onCallBack(1);
-                } else {
-                    callBack.onCallBack(0, num);
-                }
+                onListener.onInput(num);
             }
 
             @Override
             public void onKeyDownBottomLeft(boolean isLong) {
+                if (!isLong) {
+                    onListener.onClean();
+                }
             }
 
             @Override
             public void onKeyDownBottomRight(boolean isLong) {
-                if (!isLong) callBack.onCallBack(2);
+                if (!isLong) {
+                    onListener.onDone(PLPopupInputNum.this);
+                }
             }
         });
     }
