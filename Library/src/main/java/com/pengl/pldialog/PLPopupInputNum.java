@@ -39,13 +39,12 @@ public class PLPopupInputNum extends PopupWindow {
             }
 
             @Override
-            public void onKeyDownBottomRight() {
-                callBack.onCallBack(2);
+            public void onKeyDownBottomLeft(boolean isLong) {
             }
 
             @Override
-            public void onKeyDownLongBottomRight() {
-
+            public void onKeyDownBottomRight(boolean isLong) {
+                if (!isLong) callBack.onCallBack(2);
             }
         });
     }

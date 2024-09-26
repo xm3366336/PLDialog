@@ -65,7 +65,6 @@
         android:id="@+id/mViewKeyboard"
         android:layout_width="match_parent"
         android:layout_height="@dimen/pld_px_320"
-        app:KB_BtnBottomLeft_show="false"
         app:KB_BtnBottomRight_img="@mipmap/pld_keyboard_ok_dark"
         app:KB_Theme="dark"
         app:layout_constraintBottom_toBottomOf="parent"

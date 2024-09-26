@@ -58,6 +58,9 @@ public class PLDialogInputNum extends Dialog {
             mViewKeyboard = findViewById(R.id.mViewKeyboard);
         }
         this.showType = showType;
+        if (showType == TYPE.IDCARD) {
+            mViewKeyboard.setKeyboardBLText("X");
+        }
         setBgRoundedDip(8);
     }
 
@@ -158,18 +161,15 @@ public class PLDialogInputNum extends Dialog {
 
                     btn_del.setVisibility(View.VISIBLE);
                     tvNum.setText(tvNum.getText().toString() + s);
-                    if (showType == TYPE.IDCARD) {
-                        mViewKeyboard.setKeyboardBLShow(tvNum.getText().toString().length() == maxLength - 1);
-                    }
                 }
 
                 @Override
-                public void onKeyDownBottomRight() {
-                    btnOK();
+                public void onKeyDownBottomLeft(boolean isLong) {
                 }
 
                 @Override
-                public void onKeyDownLongBottomRight() {
+                public void onKeyDownBottomRight(boolean isLong) {
+                    if (!isLong) btnOK();
                 }
             });
         }
@@ -208,10 +208,6 @@ public class PLDialogInputNum extends Dialog {
         tvNum.setText(tvNum.getText().toString().substring(0, tvNum.getText().length() - 1));
         if (tvNum.getText().length() <= 0) {
             btn_del.setVisibility(View.GONE);
-        }
-
-        if (showType == TYPE.IDCARD) {
-            mViewKeyboard.setKeyboardBLShow(tvNum.getText().toString().length() == maxLength - 1);
         }
     }
 

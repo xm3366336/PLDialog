@@ -12,10 +12,14 @@
         <attr name="KB_textColor" format="color" />
         <!-- 指定字体大小 -->
         <attr name="KB_textSize" format="dimension" />
-        <!-- 是否显示左下角的按钮，默认不显示，显示的情况下，可指定输入的值 -->
-        <attr name="KB_BtnBottomLeft_show" format="boolean" />
+        <!-- 右下角的按钮显示，若text为空，则不显示，显示的情况下，可指定输入的值 -->
         <attr name="KB_BtnBottomLeft_text" format="string" />
-        <!-- 右下角的按钮显示什么图片 -->
+        <attr name="KB_BtnBottomLeft_textSize" format="dimension" />
+        <attr name="KB_BtnBottomLeft_textColor" format="color" />
+        <!-- 右下角的按钮显示，若text为空，则显示img -->
+        <attr name="KB_BtnBottomRight_text" format="string" />
+        <attr name="KB_BtnBottomRight_textSize" format="dimension" />
+        <attr name="KB_BtnBottomRight_textColor" format="color" />
         <attr name="KB_BtnBottomRight_img" format="reference" />
         <!-- 字母是否使用大写值 -->
         <attr name="KB_AllCap" format="boolean" />

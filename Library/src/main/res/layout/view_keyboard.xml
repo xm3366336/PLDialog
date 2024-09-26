@@ -150,15 +150,31 @@
         tools:background="@drawable/list_selector"
         tools:textSize="@dimen/pld_px_24" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <FrameLayout
         android:id="@+id/keyboard_btn_bottom_right"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="0dip"
         android:layout_height="0dip"
         app:layout_constraintBottom_toBottomOf="@id/keyboard_btn_bottom_left"
         app:layout_constraintEnd_toEndOf="@id/keyboard_btn_3"
         app:layout_constraintStart_toEndOf="@id/keyboard_btn_0"
         app:layout_constraintTop_toTopOf="@id/keyboard_btn_bottom_left"
-        tools:background="@drawable/list_selector" />
+        tools:background="@drawable/list_selector">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/keyboard_btn_bottom_right_img"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/keyboard_btn_bottom_right_txt"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:background="@drawable/list_selector"
+            tools:text="确定"
+            tools:textSize="@dimen/pld_px_24"
+            tools:visibility="visible" />
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

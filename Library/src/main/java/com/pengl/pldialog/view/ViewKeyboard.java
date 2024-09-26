@@ -2,7 +2,6 @@ package com.pengl.pldialog.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -11,10 +10,11 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
-import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.pengl.pldialog.R;
 
@@ -27,7 +27,9 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
             R.id.keyboard_btn_6, R.id.keyboard_btn_7, //
             R.id.keyboard_btn_8, R.id.keyboard_btn_9
     };
-    private final AppCompatImageButton keyboard_btn_bottom_right; // 右下角的按钮
+    private final View keyboard_btn_bottom_right; // 右下角的按钮
+    private final ImageView keyboard_btn_bottom_right_img;
+    private final TextView keyboard_btn_bottom_right_txt;
     private final Button keyboard_btn_bottom_left; // 左下角按钮
 
     public ViewKeyboard(Context context) {
@@ -44,53 +46,72 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
         View.inflate(context, R.layout.view_keyboard, this);
         keyboard_btn_bottom_left = findViewById(R.id.keyboard_btn_bottom_left);
         keyboard_btn_bottom_right = findViewById(R.id.keyboard_btn_bottom_right);
+        keyboard_btn_bottom_right_img = findViewById(R.id.keyboard_btn_bottom_right_img);
+        keyboard_btn_bottom_right_txt = findViewById(R.id.keyboard_btn_bottom_right_txt);
 
-        int theme = 1;
-        int textColor = 0;
         if (null != attrs) {
             @SuppressLint("CustomViewStyleable") TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.KeyBoard);
-            theme = a.getInt(R.styleable.KeyBoard_KB_Theme, 0);
-            textColor = a.getColor(R.styleable.KeyBoard_KB_textColor, 0);
+            int theme = a.getInt(R.styleable.KeyBoard_KB_Theme, 0);
+            int textColor = a.getColor(R.styleable.KeyBoard_KB_textColor, getResources().getColor(theme == 1 ? R.color.colorWhite : R.color.text_666));
+
+            setKeyboardTextColor(textColor);
             setKeyboardTextSize(a.getDimension(R.styleable.KeyBoard_KB_textSize, getResources().getDimension(R.dimen.pld_px_24)));
-            setKeyboardBLShow(a.getBoolean(R.styleable.KeyBoard_KB_BtnBottomLeft_show, false));
-            setKeyboardBLText(a.getString(R.styleable.KeyBoard_KB_BtnBottomLeft_text));
-            setKeyboardBRImageResource(a.getResourceId(R.styleable.KeyBoard_KB_BtnBottomRight_img, //
-                    theme == 1 ? R.mipmap.pld_keyboard_del_light : R.mipmap.pld_keyboard_del_dark));
+
+            String leftText = a.getString(R.styleable.KeyBoard_KB_BtnBottomLeft_text);
+            if (TextUtils.isEmpty(leftText)) {
+                keyboard_btn_bottom_left.setVisibility(View.INVISIBLE);
+            } else {
+                keyboard_btn_bottom_left.setVisibility(View.VISIBLE);
+                setKeyboardBLText(leftText);
+            }
+            setKeyboardBLTextColor(a.getColor(R.styleable.KeyBoard_KB_BtnBottomLeft_textColor, textColor));
+            setKeyboardBLTextSize(a.getDimension(R.styleable.KeyBoard_KB_BtnBottomLeft_textSize, getResources().getDimension(R.dimen.pld_px_24)));
+
+            String rightText = a.getString(R.styleable.KeyBoard_KB_BtnBottomRight_text);
+            if (TextUtils.isEmpty(rightText)) {
+                setKeyboardBRImageResource(a.getResourceId(R.styleable.KeyBoard_KB_BtnBottomRight_img, //
+                        theme == 1 ? R.mipmap.pld_keyboard_del_light : R.mipmap.pld_keyboard_del_dark));
+            } else {
+                setKeyboardBRText(rightText);
+            }
+            setKeyboardBRTextColor(a.getColor(R.styleable.KeyBoard_KB_BtnBottomRight_textColor, textColor));
+            setKeyboardBRTextSize(a.getDimension(R.styleable.KeyBoard_KB_BtnBottomRight_textSize, getResources().getDimension(R.dimen.pld_px_24)));
+
             setKeyboardBtnBg(a.getResourceId(R.styleable.KeyBoard_KB_BtnBg, R.drawable.list_selector)); //
             a.recycle();
         }
 
-        OnClickListener onClickNum = v -> {
-            String num = ((Button) v).getText().toString();
-            if (null == onKeyboardListener) {
-                return;
-            }
-            onKeyboardListener.onKeyDown(num);
-        };
-        keyboard_btn_bottom_left.setOnClickListener(onClickNum);
+        keyboard_btn_bottom_left.setOnClickListener(v -> {
 
-        OnClickListener onClickBottomRight = v -> {
-            if (null == onKeyboardListener) {
-                return;
+            if (null != onKeyboardListener) {
+                onKeyboardListener.onKeyDownBottomLeft(false);
             }
-            onKeyboardListener.onKeyDownBottomRight();
-        };
-        keyboard_btn_bottom_right.setOnClickListener(onClickBottomRight);
+        });
+        keyboard_btn_bottom_left.setOnLongClickListener(v -> {
+            if (null != onKeyboardListener) {
+                onKeyboardListener.onKeyDownBottomLeft(true);
+            }
+            return false;
+        });
+        keyboard_btn_bottom_right.setOnClickListener(v -> {
+            if (null != onKeyboardListener) {
+                onKeyboardListener.onKeyDownBottomRight(false);
+            }
+        });
         keyboard_btn_bottom_right.setOnLongClickListener(v -> {
             if (null != onKeyboardListener) {
-                onKeyboardListener.onKeyDownLongBottomRight();
+                onKeyboardListener.onKeyDownBottomRight(true);
             }
             return false;
         });
 
         for (int btnId : keyboard_btn) {
-            findViewById(btnId).setOnClickListener(onClickNum);
-        }
-
-        if (textColor == 0) {
-            setKeyboardTextColor(getResources().getColor(theme == 1 ? R.color.colorWhite : R.color.text_666));
-        } else {
-            setKeyboardTextColor(textColor);
+            findViewById(btnId).setOnClickListener(v -> {
+                String num = ((Button) v).getText().toString();
+                if (null != onKeyboardListener) {
+                    onKeyboardListener.onKeyDown(num);
+                }
+            });
         }
     }
 
@@ -116,8 +137,6 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
         for (int btnId : keyboard_btn) {
             ((Button) findViewById(btnId)).setTextColor(color);
         }
-        keyboard_btn_bottom_left.setTextColor(color);
-        keyboard_btn_bottom_right.setImageTintList(ColorStateList.valueOf(color));
     }
 
     /**
@@ -129,7 +148,6 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
         for (int btnId : keyboard_btn) {
             ((Button) findViewById(btnId)).setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
         }
-        keyboard_btn_bottom_left.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
     }
 
     /**
@@ -138,37 +156,51 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
      * @param resId 资源id
      */
     public void setKeyboardBRImageResource(@DrawableRes int resId) {
-        keyboard_btn_bottom_right.setImageResource(resId);
+        keyboard_btn_bottom_right_img.setImageResource(resId);
     }
 
-    /**
-     * 是否显示左下角的按钮
-     *
-     * @param isShow true显示，否则隐藏但占位
-     */
-    public void setKeyboardBLShow(boolean isShow) {
-        keyboard_btn_bottom_left.setVisibility(isShow ? View.VISIBLE : View.INVISIBLE);
-    }
-
-    /**
-     * 设置左下角按钮的值
-     *
-     * @param text 值
-     */
+    // ------------------ 左下方，显示文字的内容、大小及颜色 ----------------------------------------------------------------
     public void setKeyboardBLText(String text) {
         if (TextUtils.isEmpty(text)) {
             keyboard_btn_bottom_left.setText("");
+            keyboard_btn_bottom_left.setVisibility(View.INVISIBLE);
         } else {
             keyboard_btn_bottom_left.setText(text);
+            keyboard_btn_bottom_left.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void setKeyboardBLTextColor(@ColorInt int color) {
+        keyboard_btn_bottom_left.setTextColor(color);
+    }
+
+    public void setKeyboardBLTextSize(float textSize) {
+        keyboard_btn_bottom_left.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+    }
+
+    // ------------------ 右下方，若为文字，显示文字内容、大小及颜色 ----------------------------------------------------------
+    public void setKeyboardBRText(String text) {
+        keyboard_btn_bottom_right_txt.setText(TextUtils.isEmpty(text) ? "" : text);
+    }
+
+    public void setKeyboardBRTextSize(float textSize) {
+        keyboard_btn_bottom_right_txt.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+    }
+
+    public void setKeyboardBRTextColor(@ColorInt int color) {
+        keyboard_btn_bottom_right_txt.setTextColor(color);
     }
 
     public Button getBtnBottomLeft() {
         return keyboard_btn_bottom_left;
     }
 
-    public AppCompatImageButton getBtnBottomRight() {
-        return keyboard_btn_bottom_right;
+    public ImageView getBtnBottomRightImg() {
+        return keyboard_btn_bottom_right_img;
+    }
+
+    public TextView getBtnBottomRightTxt() {
+        return keyboard_btn_bottom_right_txt;
     }
 
     private OnKeyboardClickListener onKeyboardListener;
@@ -185,9 +217,9 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
     public interface OnKeyboardClickListener {
         void onKeyDown(String num);
 
-        void onKeyDownBottomRight();
+        void onKeyDownBottomLeft(boolean isLong);
 
-        void onKeyDownLongBottomRight();
+        void onKeyDownBottomRight(boolean isLong);
     }
 
     /**
