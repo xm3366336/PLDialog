@@ -62,23 +62,21 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
                 keyboard_btn_bottom_left.setVisibility(View.VISIBLE);
                 setKeyboardBLText(leftText);
             }
-            setKeyboardBLTextColor(a.getColor(R.styleable.KeyBoard_KB_BtnBottomLeft_textColor, textColor));
-            setKeyboardBLTextSize(a.getDimension(R.styleable.KeyBoard_KB_BtnBottomLeft_textSize, getResources().getDimension(R.dimen.pld_px_24)));
 
             String rightText = a.getString(R.styleable.KeyBoard_KB_BtnBottomRight_text);
             if (TextUtils.isEmpty(rightText)) {
-                setKeyboardBRImageResource(a.getResourceId(R.styleable.KeyBoard_KB_BtnBottomRight_img, //
+                keyboard_btn_bottom_right_img.setImageResource(a.getResourceId(R.styleable.KeyBoard_KB_BtnBottomRight_img,
                         theme == 1 ? R.mipmap.pld_keyboard_del_light : R.mipmap.pld_keyboard_del_dark));
                 keyboard_btn_bottom_right_img.setVisibility(View.VISIBLE);
                 keyboard_btn_bottom_right_txt.setVisibility(View.GONE);
             } else {
                 setKeyboardBRText(rightText);
-                setKeyboardBRTextColor(a.getColor(R.styleable.KeyBoard_KB_BtnBottomRight_textColor, textColor));
-                setKeyboardBRTextSize(a.getDimension(R.styleable.KeyBoard_KB_BtnBottomRight_textSize, getResources().getDimension(R.dimen.pld_px_24)));
-                keyboard_btn_bottom_right_img.setVisibility(View.GONE);
-                keyboard_btn_bottom_right_txt.setVisibility(View.VISIBLE);
             }
 
+            setKeyboardBLTextColor(a.getColor(R.styleable.KeyBoard_KB_BtnBottomLeft_textColor, textColor));
+            setKeyboardBLTextSize(a.getDimension(R.styleable.KeyBoard_KB_BtnBottomLeft_textSize, getResources().getDimension(R.dimen.pld_px_24)));
+            setKeyboardBRTextColor(a.getColor(R.styleable.KeyBoard_KB_BtnBottomRight_textColor, textColor));
+            setKeyboardBRTextSize(a.getDimension(R.styleable.KeyBoard_KB_BtnBottomRight_textSize, getResources().getDimension(R.dimen.pld_px_24)));
             setKeyboardBtnBg(a.getResourceId(R.styleable.KeyBoard_KB_BtnBg, R.drawable.list_selector)); //
             a.recycle();
         }
@@ -170,6 +168,8 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
      */
     public void setKeyboardBRImageResource(@DrawableRes int resId) {
         keyboard_btn_bottom_right_img.setImageResource(resId);
+        keyboard_btn_bottom_right_img.setVisibility(View.VISIBLE);
+        keyboard_btn_bottom_right_txt.setVisibility(View.GONE);
     }
 
     // ------------------ 左下方，显示文字的内容、大小及颜色 ----------------------------------------------------------------
@@ -199,6 +199,7 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
         } else {
             keyboard_btn_bottom_right_txt.setText(text);
             keyboard_btn_bottom_right_txt.setVisibility(View.VISIBLE);
+            keyboard_btn_bottom_right_img.setVisibility(View.GONE);
         }
     }
 
