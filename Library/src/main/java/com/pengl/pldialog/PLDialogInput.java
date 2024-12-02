@@ -2,6 +2,7 @@ package com.pengl.pldialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
@@ -181,7 +182,10 @@ public class PLDialogInput extends Dialog {
         super.onCreate(savedInstanceState);
 
         if (showType == 2) {
-
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N && null != getWindow()) {
+                getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                getWindow().setGravity(Gravity.CENTER);
+            }
         } else {
             WindowManager.LayoutParams lp = getWindow().getAttributes();
             lp.width = ViewGroup.LayoutParams.MATCH_PARENT;

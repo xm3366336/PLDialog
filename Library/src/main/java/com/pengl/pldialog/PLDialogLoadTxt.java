@@ -3,6 +3,8 @@ package com.pengl.pldialog;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Build;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
@@ -35,7 +37,12 @@ public class PLDialogLoadTxt extends Dialog {
             attributesParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
             attributesParams.dimAmount = 0.5f;
             window.setAttributes(attributesParams);
-            window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setGravity(Gravity.CENTER);
+            } else {
+                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            }
         }
 
         ((TextView) findViewById(R.id.tv_msg)).setText(tvMsg);

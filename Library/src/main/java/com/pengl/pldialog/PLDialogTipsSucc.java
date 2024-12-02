@@ -2,7 +2,10 @@ package com.pengl.pldialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Build;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.WindowManager;
 
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -44,6 +47,11 @@ public class PLDialogTipsSucc extends Dialog {
 
     private void init() {
         setContentView(R.layout.pl_dialog_tips_succ);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N && null != getWindow()) {
+            getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            getWindow().setGravity(Gravity.CENTER);
+        }
+
         bg = findViewById(R.id.bg);
         ic_tips_succ = findViewById(R.id.ic_tips_succ);
         tv_title = findViewById(R.id.succ_title);

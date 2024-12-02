@@ -2,8 +2,11 @@ package com.pengl.pldialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Build;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
@@ -52,6 +55,11 @@ public class PLDialog extends Dialog {
     private void init(@LayoutRes int layoutResID) {
         setContentView(layoutResID);
         setCanceledOnTouchOutside(false);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N && null != getWindow()) {
+            getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            getWindow().setGravity(Gravity.CENTER);
+        }
+
         bg = findViewById(R.id.bg);
         tv_title = findViewById(R.id.tv_title);
         tv_content = findViewById(R.id.tv_content);
