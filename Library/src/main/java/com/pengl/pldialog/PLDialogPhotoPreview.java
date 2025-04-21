@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,21 +54,27 @@ public class PLDialogPhotoPreview extends Dialog {
             View decorView = window.getDecorView();
             // 设置window背景，默认的背景会有Padding值，不能全屏。当然不一定要是透明，你可以设置其他背景，替换默认的背景即可。
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            // 两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(option);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-            // 设置导航栏颜色
-            window.setNavigationBarColor(Color.TRANSPARENT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                window.setStatusBarColor(Color.TRANSPARENT);
+                window.setNavigationBarColor(Color.TRANSPARENT);
+                decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+            } else {
+                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            }
+
             // 内容扩展到导航栏
             window.setType(WindowManager.LayoutParams.TYPE_APPLICATION_PANEL);
-        }
 
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
-        getWindow().setAttributes(lp);
+            WindowManager.LayoutParams lp = window.getAttributes();
+            lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
+            window.setAttributes(lp);
+        }
 
         PhotoView mPhotoView = findViewById(R.id.mPhotoView);
         if (isUseCache) {

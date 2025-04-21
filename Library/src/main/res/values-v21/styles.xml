@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="PLKeyboardBtn">
+        <item name="android:layout_height">@dimen/pld_px_72</item>
+        <item name="android:layout_marginStart">@dimen/pld_px_2</item>
+        <item name="android:layout_marginEnd">@dimen/pld_px_2</item>
+        <item name="android:background">@drawable/list_selector_white</item>
+        <item name="android:textColor">@color/text_666_to_999</item>
+        <item name="android:textSize">@dimen/pld_px_18</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+</resources>

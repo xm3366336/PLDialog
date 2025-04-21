@@ -46,11 +46,6 @@ class VehicleKeyboardView extends KeyboardView {
         init();
     }
 
-    public VehicleKeyboardView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init();
-    }
-
     private void init() {
         paint = new Paint();
         paint.setTextAlign(Paint.Align.CENTER);
