@@ -12,10 +12,10 @@ buildscript {
 
 ext {
     compileSdkVersion = 35
-    minSdkVersion = 21
+    minSdkVersion = 19
     targetSdkVersion = 35
-    versionCode = 2412021
-    versionName = "1.5.7"
+    versionCode = 2504211
+    versionName = "1.5.8"
 }
 
 allprojects {
