@@ -2,12 +2,9 @@ package com.pengl.pldialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Build;
 import android.text.Spanned;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
@@ -48,10 +45,6 @@ public class PLDialogTips extends Dialog {
     private void init(String content) {
         setContentView(R.layout.pl_dialog_tips);
         setCanceledOnTouchOutside(false);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N && null != getWindow()) {
-            getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-            getWindow().setGravity(Gravity.CENTER);
-        }
 
         bg = findViewById(R.id.bg);
         tv_title = findViewById(R.id.tv_title);

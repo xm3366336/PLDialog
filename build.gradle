@@ -5,17 +5,17 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.13.1'
+        classpath 'com.android.tools.build:gradle:9.5.1'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
 ext {
-    compileSdkVersion = 36
-    minSdkVersion = 21
-    targetSdkVersion = 36
-    versionCode = 2511141
-    versionName = "1.5.9"
+    compileSdkVersion = 37
+    minSdkVersion = 24
+    targetSdkVersion = 37
+    versionCode = 2611081
+    versionName = "1.6.0"
 }
 
 allprojects {

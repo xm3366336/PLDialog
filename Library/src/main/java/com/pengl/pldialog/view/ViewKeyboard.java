@@ -50,7 +50,7 @@ public class ViewKeyboard extends androidx.constraintlayout.widget.ConstraintLay
         if (null != attrs) {
             @SuppressLint("CustomViewStyleable") TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.KeyBoard);
             int theme = a.getInt(R.styleable.KeyBoard_KB_Theme, 0);
-            int textColor = a.getColor(R.styleable.KeyBoard_KB_textColor, getResources().getColor(theme == 1 ? R.color.colorWhite : R.color.text_666));
+            int textColor = a.getColor(R.styleable.KeyBoard_KB_textColor, getResources().getColor(theme == 1 ? R.color.colorWhite : R.color.text_666, null));
 
             setKeyboardTextColor(textColor);
             setKeyboardTextSize(a.getDimension(R.styleable.KeyBoard_KB_textSize, getResources().getDimension(R.dimen.pld_px_24)));

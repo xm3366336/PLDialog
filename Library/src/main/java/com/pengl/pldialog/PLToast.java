@@ -58,7 +58,7 @@ public class PLToast {
         View v = inflate.inflate(R.layout.pl_toast, null);
         TextView tv = v.findViewById(R.id.toast_tv);
         tv.setText(message);
-        tv.setTextColor(ctx.getResources().getColor(R.color.colorWhite));
+        tv.setTextColor(ctx.getResources().getColor(R.color.colorWhite, null));
         ImageView img = v.findViewById(R.id.toast_img);
 
         if (type == 1) {
@@ -97,7 +97,7 @@ public class PLToast {
         TextView tv = new TextView(ctx);
         tv.setBackgroundResource(R.drawable.bg_r8_black_t99);
         tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, ctx.getResources().getDimension(R.dimen.pld_px_14));
-        tv.setTextColor(ctx.getResources().getColor(R.color.colorWhite));
+        tv.setTextColor(ctx.getResources().getColor(R.color.colorWhite, null));
         tv.setPadding(3 * px8, px8, 3 * px8, px8);
         tv.setText(message);
         tv.setGravity(Gravity.CENTER);

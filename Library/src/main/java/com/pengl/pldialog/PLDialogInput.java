@@ -26,6 +26,7 @@ import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.ShapeAppearanceModel;
 import com.pengl.pldialog.util.ICallBack;
 
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -181,12 +182,7 @@ public class PLDialogInput extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (showType == 2) {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N && null != getWindow()) {
-                getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-                getWindow().setGravity(Gravity.CENTER);
-            }
-        } else {
+        if (showType != 2) {
             WindowManager.LayoutParams lp = getWindow().getAttributes();
             lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
             lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -197,7 +193,7 @@ public class PLDialogInput extends Dialog {
 
         btn_cancel.setOnClickListener(v -> dismiss());
         btn_confirm.setOnClickListener(view -> {
-            String input = etInput.getText().toString().trim();
+            String input = Objects.requireNonNull(etInput.getText()).toString().trim();
             if (isMustInput && TextUtils.isEmpty(input)) {
                 Toast.makeText(getContext(), "还没有输入", Toast.LENGTH_SHORT).show();
                 return;
@@ -221,7 +217,7 @@ public class PLDialogInput extends Dialog {
             @Override
             public void afterTextChanged(Editable s) {
                 if (isMustInput) {
-                    String input = etInput.getText().toString().trim();
+                    String input = Objects.requireNonNull(etInput.getText()).toString().trim();
                     btn_confirm.setEnabled(!TextUtils.isEmpty(input));
                 }
             }

@@ -118,7 +118,7 @@ public class PLDialogChoice extends BottomSheetDialog {
         AppCompatButton btn = new AppCompatButton(getContext());
         btn.setText(str);
         btn.setAllCaps(false);
-        btn.setTextColor(getContext().getResources().getColor(R.color.text_666_to_999));
+        btn.setTextColor(getContext().getResources().getColor(R.color.text_666_to_999, null));
         btn.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(R.dimen.pld_px_16));
         btn.setMinHeight(getContext().getResources().getDimensionPixelSize(R.dimen.pld_px_44));
 

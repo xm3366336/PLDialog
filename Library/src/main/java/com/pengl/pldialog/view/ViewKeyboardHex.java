@@ -78,7 +78,7 @@ public class ViewKeyboardHex extends androidx.constraintlayout.widget.Constraint
         });
 
         if (textColor == 0) {
-            setKeyboardTextColor(getResources().getColor(theme == 1 ? R.color.colorWhite : R.color.text_666));
+            setKeyboardTextColor(getResources().getColor(theme == 1 ? R.color.colorWhite : R.color.text_666, null));
         } else {
             setKeyboardTextColor(textColor);
         }
