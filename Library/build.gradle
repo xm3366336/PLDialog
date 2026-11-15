@@ -1,6 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
+// JitPack 通过 -Pgroup / -Pversion 注入坐标，也提供 GROUP / VERSION 环境变量。
+// 优先级：Gradle 属性 > JitPack 环境变量 > 本地默认值
+group = providers.gradleProperty('group')
+        .getOrElse(System.getenv('GROUP') ?: 'com.github.xm3366336')
+version = providers.gradleProperty('version')
+        .getOrElse(System.getenv('VERSION') ?: rootProject.ext.versionName)
+
 android {
     namespace 'com.pengl.pldialog'
     compileSdkVersion = rootProject.compileSdkVersion
@@ -42,6 +49,27 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
+
+                // JitPack 通过 -Pgroup / -Pversion 注入坐标，Gradle 的 MavenPublication
+                // 默认已读取 project.group / project.version，这里只需修正 artifactId，
+                // 否则会变成模块名 Library，使用者无法按 com.github.xm3366336:PLDialog 引入
+                artifactId = 'PLDialog'
+
+                pom {
+                    name = 'PLDialog'
+                    description = 'Android 常用 Dialog 组件封装：提示框、进度框、输入框、选择框、看图片、输车牌'
+                    url = 'https://github.com/xm3366336/PLDialog'
+                    licenses {
+                        license {
+                            name = 'The Apache Software License, Version 2.0'
+                            url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    scm {
+                        url = 'https://github.com/xm3366336/PLDialog'
+                        connection = 'scm:git:https://github.com/xm3366336/PLDialog.git'
+                    }
+                }
             }
         }
     }

@@ -1,6 +1,13 @@
-before_install:
-  - sdk install java 17.0.1-open
-  - sdk use java 17.0.1-open
-
 jdk:
   - openjdk17
+
+# 只构建并发布 Library 模块，不构建 Demo(app) 模块：
+# 1) 大幅缩短 JitPack 构建时间
+# 2) 避免 app 模块 release 的 R8 混淆带来的无关失败
+#
+# group / version 由 Library/build.gradle 读取：
+#   - 优先使用 Gradle 属性 -Pgroup / -Pversion
+#   - 其次使用 JitPack 注入的环境变量 GROUP / VERSION
+#   - 最后回退到本地默认值 com.github.xm3366336 / 1.6.0
+install:
+  - ./gradlew :Library:publishToMavenLocal -x test -x lint
