@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyWidth="10%p">
+    <Row android:keyHeight="52dp">
+        <Key
+            android:codes="10086"
+            android:keyWidth="15%p"
+            android:keyIcon="@drawable/ic_keyboard_close" />
+    </Row>
     <Row android:keyHeight="60dp">
         <Key
             android:codes="49"
@@ -128,10 +134,5 @@
             android:keyWidth="15%p"
             android:keyIcon="@drawable/ic_keyboard_del" />
     </Row>
-    <Row android:keyHeight="44dp">
-        <Key
-            android:codes="10086"
-            android:keyWidth="100%p"
-            android:keyIcon="@drawable/ic_keyboard_close" />
-    </Row>
+    <Row android:keyHeight="8dp"></Row>
 </Keyboard>

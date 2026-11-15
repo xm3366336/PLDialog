@@ -2,7 +2,6 @@ package com.pengl.pldialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;

@@ -64,10 +64,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dip"
             android:orientation="horizontal">
 
             <Button
                 style="@style/item_main_btn_style"
+                android:layout_marginTop="0dip"
                 android:layout_marginEnd="8dip"
                 android:layout_weight="1"
                 android:onClick="OnClickDialog1"
@@ -77,6 +79,7 @@
             <Button
                 style="@style/item_main_btn_style"
                 android:layout_marginStart="8dip"
+                android:layout_marginTop="0dip"
                 android:layout_weight="1"
                 android:onClick="OnClickDialog2"
                 android:text="Dialog窗口2"
