@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <style name="PLAppDialog" parent="Theme.MaterialComponents.Light.Dialog">
@@ -11,6 +12,26 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowActionBar">false</item>
+    </style>
+
+    <!--
+      Edge-to-Edge：
+      悬浮窗口（windowIsFloating=true）的框架会被系统裁剪在导航条之上，
+      导致导航条区域显示的是应用背景（与弹窗背景存在色差）。
+      这里改为全屏窗口，内容可延伸到导航条下方，
+      导航条区域由弹窗自身的背景色填充，与应用界面自然融为一体。
+    -->
+    <style name="PLAppDialog.EdgeToEdge" parent="PLAppDialog.TransBg">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <!-- 底部弹窗（BottomSheetDialog）的 Edge-to-Edge 支持 -->
+        <item name="enableEdgeToEdge">true</item>
     </style>
 
     <style name="PLAppDialog.TransBg.FadeInOut">

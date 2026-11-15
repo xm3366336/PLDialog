@@ -15,6 +15,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.ShapeAppearanceModel;
+import com.pengl.pldialog.util.EdgeToEdgeUtils;
 import com.pengl.pldialog.util.ICallBack;
 import com.pengl.pldialog.view.ViewKeyboard;
 import com.pengl.pldialog.view.ViewKeyboardHex;
@@ -47,7 +48,7 @@ public class PLDialogInputNum extends Dialog {
     }
 
     public PLDialogInputNum(Context context, TYPE showType) {
-        super(context, R.style.PLAppDialog_TransBg);
+        super(context, R.style.PLAppDialog_EdgeToEdge);
         setContentView(showType == TYPE.HEX16 ? R.layout.pl_dialog_input_hex : R.layout.pl_dialog_input_num);
         bg = findViewById(R.id.bg);
         tvNum = findViewById(R.id.tv_num);
@@ -133,9 +134,12 @@ public class PLDialogInputNum extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Edge-to-Edge：内容延伸至导航条下方，导航条区域由弹窗背景填充
+        EdgeToEdgeUtils.applyEdgeToEdge(getWindow());
+
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
         lp.gravity = Gravity.BOTTOM;
         getWindow().setAttributes(lp);
         getWindow().setWindowAnimations(R.style.PLKeyboardStyle);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,78 +7,92 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/bg"
-        android:layout_width="0dip"
-        android:layout_height="0dip"
-        android:background="@color/pld_default_bg"
-        app:layout_constraintBottom_toBottomOf="@id/space1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_title"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/pld_px_16"
-        android:layout_marginTop="@dimen/pld_px_16"
-        android:layout_marginEnd="@dimen/pld_px_16"
-        android:gravity="start"
-        android:textColor="@color/text_333"
-        android:textSize="@dimen/pld_px_24"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="这是标题"
-        tools:visibility="visible" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_content"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/pld_px_16"
-        android:layout_marginTop="@dimen/pld_px_8"
-        android:layout_marginEnd="@dimen/pld_px_16"
-        android:textColor="@color/text_666"
-        android:textSize="@dimen/pld_px_14"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        tools:text="这是内容描述"
-        tools:visibility="visible" />
-
-    <LinearLayout
-        android:id="@+id/layout_btns"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/pld_px_16"
-        android:layout_marginTop="@dimen/pld_px_16"
-        android:layout_marginEnd="@dimen/pld_px_16"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_content" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/pld_px_44"
-        android:layout_marginStart="@dimen/pld_px_16"
-        android:layout_marginTop="@dimen/pld_px_16"
-        android:layout_marginEnd="@dimen/pld_px_16"
-        android:background="@drawable/btn_r4_stroke_white"
-        android:gravity="center"
-        android:stateListAnimator="@null"
-        android:text="取消"
-        android:textColor="@color/text_666_to_999"
-        android:textSize="@dimen/pld_px_16"
-        app:layout_constraintTop_toBottomOf="@id/layout_btns" />
+        android:layout_height="match_parent"
+        android:background="@color/pld_default_bg" />
 
-    <Space
-        android:id="@+id/space1"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_content"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/pld_px_16"
-        app:layout_constraintTop_toBottomOf="@id/btn_cancel" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pld_px_16"
+            android:layout_marginTop="@dimen/pld_px_16"
+            android:layout_marginEnd="@dimen/pld_px_16"
+            android:gravity="start"
+            android:textColor="@color/text_333"
+            android:textSize="@dimen/pld_px_24"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="这是标题"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_content"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pld_px_16"
+            android:layout_marginTop="@dimen/pld_px_8"
+            android:layout_marginEnd="@dimen/pld_px_16"
+            android:textColor="@color/text_666"
+            android:textSize="@dimen/pld_px_14"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="这是内容描述"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/layout_btns"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pld_px_16"
+            android:layout_marginTop="@dimen/pld_px_16"
+            android:layout_marginEnd="@dimen/pld_px_16"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pld_px_44"
+            android:layout_marginStart="@dimen/pld_px_16"
+            android:layout_marginTop="@dimen/pld_px_16"
+            android:layout_marginEnd="@dimen/pld_px_16"
+            android:background="@drawable/btn_r4_stroke_white"
+            android:gravity="center"
+            android:stateListAnimator="@null"
+            android:text="取消"
+            android:textColor="@color/text_666_to_999"
+            android:textSize="@dimen/pld_px_16"
+            app:layout_constraintTop_toBottomOf="@id/layout_btns" />
+
+        <Space
+            android:id="@+id/space1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pld_px_16"
+            app:layout_constraintTop_toBottomOf="@id/btn_cancel" />
+
+        <!-- 导航条占位，使导航条区域由弹窗背景填充 -->
+        <com.pengl.pldialog.view.ViewBottomInset
+            android:id="@+id/space_inset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/space1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

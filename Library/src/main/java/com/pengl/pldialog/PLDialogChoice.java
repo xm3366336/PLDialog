@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.ShapeAppearanceModel;
+import com.pengl.pldialog.util.EdgeToEdgeUtils;
 
 import java.util.Objects;
 
@@ -32,7 +33,7 @@ public class PLDialogChoice extends BottomSheetDialog {
     private OnClickListener onConfirmListener;
 
     public PLDialogChoice(Context context) {
-        super(context, R.style.PLAppDialog_TransBg);
+        super(context, R.style.PLAppDialog_EdgeToEdge);
         setContentView(R.layout.pl_dialog_choice);
         this.bg = findViewById(R.id.bg);
         this.btn_cancel = findViewById(R.id.btn_cancel);
@@ -97,6 +98,9 @@ public class PLDialogChoice extends BottomSheetDialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getWindow()).setWindowAnimations(R.style.PLKeyboardStyle);
+
+        // Edge-to-Edge：内容延伸至导航条下方，导航条区域由弹窗背景填充
+        EdgeToEdgeUtils.applyEdgeToEdge(getWindow());
 
         btn_cancel.setOnClickListener(view -> {
             if (null != onConfirmListener) {
