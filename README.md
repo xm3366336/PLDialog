@@ -10,8 +10,9 @@ Android开发过程中，Dialog必不可少的一个组件，本人常用的几�
 > 1、引入
 
 ```
-implementation 'com.github.xm3366336:PLDialog:1.5.7'
+implementation 'com.github.xm3366336:PLDialog:1.6.0'
 ```
+1.6.0后最低版本为24，需要24以下的，只能用1.5.8
 
 > 2、看Demo中的MainActivity即可
 
