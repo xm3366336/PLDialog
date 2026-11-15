@@ -24,6 +24,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.ShapeAppearanceModel;
+import com.pengl.pldialog.util.EdgeToEdgeUtils;
 import com.pengl.pldialog.util.ICallBack;
 
 import java.util.Objects;
@@ -47,12 +48,13 @@ public class PLDialogInput extends Dialog {
     private int showType = 0;// 显示样式
 
     public PLDialogInput(Context context) {
-        super(context, R.style.PLAppDialog_TransBg);
+        super(context, R.style.PLAppDialog_EdgeToEdge);
         init(R.layout.pl_dialog_input);
     }
 
     public PLDialogInput(Context context, int showType) {
-        super(context, R.style.PLAppDialog_TransBg);
+        // showType == 2 为居中样式，保持原有悬浮窗口；其余为底部弹窗，使用 Edge-to-Edge
+        super(context, showType == 2 ? R.style.PLAppDialog_TransBg : R.style.PLAppDialog_EdgeToEdge);
         this.showType = showType;
         init(showType == 2 ? R.layout.pl_dialog_input_2 : R.layout.pl_dialog_input);
     }
@@ -183,9 +185,12 @@ public class PLDialogInput extends Dialog {
         super.onCreate(savedInstanceState);
 
         if (showType != 2) {
+            // Edge-to-Edge：内容延伸至导航条下方，导航条区域由弹窗背景填充
+            EdgeToEdgeUtils.applyEdgeToEdge(getWindow());
+
             WindowManager.LayoutParams lp = getWindow().getAttributes();
             lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-            lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
             lp.gravity = Gravity.BOTTOM;
             getWindow().setAttributes(lp);
             getWindow().setWindowAnimations(R.style.PLKeyboardStyle);

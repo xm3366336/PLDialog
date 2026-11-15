@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.chrisbanes.photoview.PhotoView;
+import com.pengl.pldialog.util.EdgeToEdgeUtils;
 
 /**
  * 单图片浏览
@@ -51,16 +52,13 @@ public class PLDialogPhotoPreview extends Dialog {
 
         Window window = getWindow();
         if (null != window) {
-            View decorView = window.getDecorView();
             // 设置window背景，默认的背景会有Padding值，不能全屏。当然不一定要是透明，你可以设置其他背景，替换默认的背景即可。
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-            window.setNavigationBarColor(Color.TRANSPARENT);
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+
+            // Edge-to-Edge：系统栏透明，内容延伸到导航条下方。
+            EdgeToEdgeUtils.applyEdgeToEdge(window, false);
 
             // 内容扩展到导航栏
             window.setType(WindowManager.LayoutParams.TYPE_APPLICATION_PANEL);

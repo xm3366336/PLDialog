@@ -8,11 +8,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 /**
- * 底部导航条占位 View
+ * 底部占位视图。
  * <p>
- * 高度等于系统导航条的高度，用于把弹窗底部的内容向上顶，
- * 而导航条所在的区域则由弹窗自身的背景色填充，
- * 从而让导航条与弹窗内容自然融为一体（Edge-to-Edge）。
+ * 高度自动等于「导航条（系统栏）与刘海屏底部」的 inset，
+ * 用于在 Edge-to-Edge 下把导航条区域让给弹窗自身的背景，
+ * 从而让导航条与弹窗背景融为一体，消除色差与割裂感。
+ * <p>
+ * 当输入法弹出时（{@link WindowInsetsCompat.Type#ime()}），
+ * 高度会自动变为输入法高度，保证输入框等交互内容不会被键盘遮挡。
  */
 public class ViewBottomInset extends View {
 
@@ -30,10 +33,22 @@ public class ViewBottomInset extends View {
         super(context, attrs, defStyleAttr);
 
         ViewCompat.setOnApplyWindowInsetsListener(this, (v, windowInsets) -> {
-            setInsetBottom(windowInsets.getInsets(
-                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout()).bottom);
+            setInsetBottom(resolveInsetBottom(windowInsets));
             return windowInsets;
         });
+    }
+
+    private int resolveInsetBottom(WindowInsetsCompat windowInsets) {
+        int systemBottom = windowInsets.getInsets(
+                WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout()).bottom;
+
+        int imeBottom = 0;
+        if (windowInsets.isVisible(WindowInsetsCompat.Type.ime())) {
+            imeBottom = windowInsets.getInsets(WindowInsetsCompat.Type.ime()).bottom;
+        }
+
+        // 取较大值：键盘弹出时以键盘高度为准，否则以导航条高度为准
+        return Math.max(systemBottom, imeBottom);
     }
 
     private void setInsetBottom(int insetBottom) {

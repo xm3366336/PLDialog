@@ -48,6 +48,7 @@
                     android:paddingBottom="@dimen/pld_px_32"
                     android:textColor="@color/text_333"
                     android:textSize="@dimen/pld_px_56"
+                    tools:ignore="MissingConstraints"
                     tools:maxLength="10"
                     tools:text="13901234567890" />
 
